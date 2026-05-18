@@ -1,0 +1,8 @@
+{
+  "latency_ms": 120,
+  "packet_loss_pct": 0.1,
+  "cpu_usage_pct": 28,
+  "throughput_gbps": 9.8,
+  "error_rate_pct": 0.05,
+  "status": "HEALTHY"
+}

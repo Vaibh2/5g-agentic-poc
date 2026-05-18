@@ -1,0 +1,2600 @@
+[
+  {
+    "workflow_id": "wf_6B624A76",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "test.yaml"
+    ],
+    "repo_path": "C:/test",
+    "created_at": "2026-05-17T12:15:38.147487",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T12:15:38.162021",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T12:15:39.181164",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T12:15:39.188164",
+        "agent": "Deploy Agent",
+        "message": "\u274c No valid YAML files found to deploy"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_0DF917A5",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "test.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T12:35:57.885614",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T12:35:57.909292",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T12:35:58.925912",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T12:35:58.925912",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: test.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T12:35:59.939303",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T12:35:59.948297",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 CrewAI Agent analyzing configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T12:36:00.947651",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-17T12:36:01.964627",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-17T12:36:03.971501",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-17T12:36:04.983832",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_5ABE2D49",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T13:36:08.575738",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T13:36:08.598479",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:09.602601",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:09.610266",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T13:36:10.627991",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:10.639102",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:10.646022",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:11.671911",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:11.680204",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:12.690022",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:12.696934",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:13.705043",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:14.742725",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:15.769486",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:17.784693",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-17T13:36:18.795179",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_1435CB88",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T13:53:08.172251",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T13:53:08.203648",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:09.216562",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:09.216562",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T13:53:10.298611",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:10.313599",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:10.325597",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:11.333834",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 1 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:11.349084",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:12.351037",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:12.356846",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:13.354874",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:14.358332",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:15.375517",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:17.416550",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-17T13:53:18.431462",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_A7ED0C22",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T13:58:26.668539",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-17T13:58:39.093059"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-17T13:58:39.098469"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T13:58:26.701400",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T13:58:27.719038",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T13:58:27.727356",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:28.744836",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T13:58:28.752878",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:58:28.761915",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:58:37.000696",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-17T13:58:39.036782",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:39.054304",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: Error importing native provider: OPENAI_API_KEY is required"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:39.063693",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:39.074048",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:39.083055",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-17T13:58:55.908274",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:55.908274",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:55.908274",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:55.908274",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-17T13:58:55.908274",
+        "agent": "Rollback Agent",
+        "message": "\u2705 Rollback executed successfully"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_0D22EE5A",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T14:03:29.334438",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-17T14:03:41.732740"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-17T14:03:41.748365"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T14:03:29.372281",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:30.362498",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:30.378142",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T14:03:31.400958",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:31.413773",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:31.424356",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:36.875369",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:37.928604",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:39.966620",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-17T14:03:41.692979",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-17T14:03:41.710002",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\nPlease retry in 19.125244321s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}"
+      },
+      {
+        "timestamp": "2026-05-17T14:03:41.717088",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-17T14:03:41.717088",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-17T14:03:41.732740",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:12:10.602044",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-17T14:12:10.602044",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-17T14:12:10.602044",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-17T14:12:10.602044",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-17T14:12:10.602044",
+        "agent": "Rollback Agent",
+        "message": "\u2705 Rollback executed successfully"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_933D9D3E",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T14:13:10.938096",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-17T14:13:22.586545"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-17T14:13:22.593780"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T14:13:10.971010",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:12.004293",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:12.023383",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T14:13:13.025064",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:13.037014",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:13.048015",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:18.327160",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:18.831073",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:20.957231",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-17T14:13:22.526222",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-17T14:13:22.546970",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\nPlease retry in 38.283429105s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '38s'}]}}"
+      },
+      {
+        "timestamp": "2026-05-17T14:13:22.555153",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-17T14:13:22.567444",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-17T14:13:22.576442",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_3252C932",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T14:16:05.563747",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-17T14:16:17.089825"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-17T14:16:17.100458"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T14:16:05.601313",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:06.605005",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:06.616394",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T14:16:07.634155",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:07.644241",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:07.655593",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:12.675403",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:13.367878",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:15.477874",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-17T14:16:17.032534",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-17T14:16:17.039655",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\nPlease retry in 43.753484228s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.0-flash', 'location': 'global'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}"
+      },
+      {
+        "timestamp": "2026-05-17T14:16:17.059637",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-17T14:16:17.066312",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-17T14:16:17.080126",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_436F0C8D",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T14:17:52.453351",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-17T14:18:04.021592"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-17T14:18:04.031611"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T14:17:52.478332",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T14:17:53.486935",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T14:17:53.502489",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T14:17:54.553355",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T14:17:54.570319",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:17:54.583479",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:17:59.581817",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-17T14:18:00.361489",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-17T14:18:02.330295",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-17T14:18:03.955120",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-17T14:18:03.970655",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\nPlease retry in 56.883232674s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '56s'}]}}"
+      },
+      {
+        "timestamp": "2026-05-17T14:18:03.989844",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-17T14:18:03.989844",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-17T14:18:04.011620",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_CBE3962C",
+    "status": "QUEUED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T14:23:45.673438",
+    "steps": [],
+    "agent_narrations": []
+  },
+  {
+    "workflow_id": "wf_BD93F36A",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-17T14:25:44.321203",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-17T14:25:54.556893"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-17T14:25:54.571380"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-17T14:25:44.358402",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:45.374033",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:45.384197",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-17T14:25:46.407533",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:46.407533",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:46.433251",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:51.341215",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:51.886064",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:52.985625",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-17T14:25:54.497478",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-17T14:25:54.518304",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\\nPlease retry in 6.27080909s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}, {'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_input_token_count', 'quotaId': 'GenerateContentInputTokensPerModelPerMinute-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.0-flash'}}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}"
+      },
+      {
+        "timestamp": "2026-05-17T14:25:54.529364",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-17T14:25:54.540073",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-17T14:25:54.549778",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_BF5200D8",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T16:55:10.615344",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T16:55:25.162027"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T16:55:25.177652"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T16:55:10.643268",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:11.655035",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:11.666911",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T16:55:12.680264",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:12.686937",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:12.702770",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:20.516099",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:22.080309",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:23.056435",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-18T16:55:25.120970",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T16:55:25.139199",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}"
+      },
+      {
+        "timestamp": "2026-05-18T16:55:25.146364",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T16:55:25.146364",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-18T16:55:25.162027",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-18T16:56:30.187547",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-18T16:56:30.187547",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-18T16:56:30.187547",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-18T16:56:30.187547",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-18T16:56:30.187547",
+        "agent": "Rollback Agent",
+        "message": "\u2705 Rollback executed successfully"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_9ECBBBB9",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T17:08:52.285624",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T17:09:00.104075"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T17:09:00.114076"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T17:08:52.298625",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T17:08:53.306611",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T17:08:53.317612",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T17:08:54.322046",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T17:08:54.332041",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:08:54.342039",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:08:55.399902",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-18T17:08:56.751300",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T17:08:57.919269",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-18T17:09:00.044740",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T17:09:00.064744",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}"
+      },
+      {
+        "timestamp": "2026-05-18T17:09:00.074740",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T17:09:00.084209",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-18T17:09:00.093212",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:13:03.679905",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-18T17:13:03.679905",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-18T17:13:03.679905",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-18T17:13:03.679905",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-18T17:13:03.679905",
+        "agent": "Rollback Agent",
+        "message": "\u2705 Rollback executed successfully"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_52A15081",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T17:17:05.132484",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T17:17:17.240972"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T17:17:17.251973"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T17:17:05.153485",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:06.161392",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:06.170369",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:07.175400",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:07.185370",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:07.194370",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:12.941438",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:14.101058",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:15.103111",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:17.172788",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:17.192787",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements.', 'status': 'NOT_FOUND'}}"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:17.203790",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:17.215971",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:17.227972",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:17:56.758386",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:56.758386",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:56.758386",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:56.758386",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-18T17:17:56.758386",
+        "agent": "Rollback Agent",
+        "message": "\u2705 Rollback executed successfully"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_542AF83E",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T17:19:41.373854",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T17:19:49.992018"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T17:19:50.003021"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T17:19:41.420856",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T17:19:42.434155",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T17:19:42.444639",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T17:19:43.447821",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T17:19:43.458826",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:19:43.468821",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:19:48.916089",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T17:19:49.924019",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T17:19:49.949019",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: Error importing native provider: OPENAI_API_KEY is required"
+      },
+      {
+        "timestamp": "2026-05-18T17:19:49.959021",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T17:19:49.970020",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 30s"
+      },
+      {
+        "timestamp": "2026-05-18T17:19:49.982021",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:21:32.134168",
+        "agent": "Rollback Agent",
+        "message": "\u274c Rollback cancelled by user"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_56FBA108",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T17:40:57.376038",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T17:40:57.402139",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T17:40:58.424428",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T17:40:58.440354",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T17:40:59.470493",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T17:40:59.487751",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:40:59.498757",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:05.167468",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 1 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:05.178626",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:06.191521",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:06.202050",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:07.210109",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:08.241362",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:09.261563",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:11.276674",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T17:41:12.265820",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_7F61FA9A",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:31:50.680336",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:31:50.722908",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:31:51.723982",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:31:51.730970",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:31:52.742194",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:31:52.753372",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:31:52.763594",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:31:59.265292",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T18:31:59.265292",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:32:00.317158",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T18:32:00.327186",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:32:01.336450",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T18:32:02.337453",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:32:03.356121",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T18:32:05.376185",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:32:06.383633",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_207D3210",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:42:38.553905",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:42:38.571797",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:39.576801",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:39.598568",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:42:40.590669",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:40.601433",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:40.611667",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:41.614100",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:41.625128",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:42.627486",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:42.637301",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:43.659421",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:44.665342",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:45.687240",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:47.702410",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:42:48.720399",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_D1CFEB07",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:43:24.565149",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:43:24.588447",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:25.599438",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:25.616347",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:43:26.616002",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:26.630956",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:26.642957",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:32.503227",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:32.513463",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:33.518549",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:33.528477",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:34.555592",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:35.575075",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:36.577562",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:38.581145",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:39.577441",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_7330F066",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:43:57.911412",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:43:57.918145",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:58.905018",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:58.919082",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:43:59.940327",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:59.951296",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:43:59.962366",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:00.979013",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:00.999498",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:02.013454",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:02.025900",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:03.048745",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:04.049139",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:05.079550",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:07.087842",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:08.111186",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_BB43883E",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:44:49.420476",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:44:49.443554",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:50.450234",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:50.491116",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:44:51.488263",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:51.505069",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:51.516592",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:56.993414",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:57.004592",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:57.991480",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:58.004932",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:44:59.037973",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T18:45:00.063311",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:45:01.066501",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T18:45:03.062439",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:45:04.074911",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_B8BD19F4",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:48:09.149073",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:48:09.189928",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:10.195663",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:10.212534",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:48:11.224798",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:11.235503",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:11.246837",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:17.344210",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:17.362017",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:18.377503",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:18.387513",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:19.405526",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:20.416725",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:21.428169",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:23.434491",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:48:24.457225",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_29542E96",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config2.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:51:27.802629",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T18:51:32.964974"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T18:51:32.980573"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:51:27.817505",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:28.817517",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:28.828454",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config2.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:29.834530",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:29.845430",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:29.856424",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:30.872583",
+        "agent": "Deploy Agent",
+        "message": "\u274c Validation failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:30.883914",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:31.896498",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udccb Rollback recommendation: NEEDED"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:31.906582",
+        "agent": "Rollback Agent",
+        "message": "\u26a0\ufe0f Reason: Deployment failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:31.917223",
+        "agent": "Rollback Agent",
+        "message": "\u2753 Awaiting confirmation to proceed with rollback..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:32.915451",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:32.939278",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: Deployment failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:32.949313",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:32.949313",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 45s"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:32.964974",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:51:41.436845",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:41.436845",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:41.436845",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:41.436845",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-18T18:51:41.436845",
+        "agent": "Rollback Agent",
+        "message": "\u2705 Rollback executed successfully"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_CD60A17E",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:53:23.466805",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:53:23.483920",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:24.481079",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:24.494960",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:53:25.502332",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:25.513540",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:25.524809",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:26.535895",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed: Configuration validated. 0 warnings (non-blocking)."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:26.567872",
+        "agent": "Network Agent",
+        "message": "\ud83c\udf10 Starting network infrastructure validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:27.567922",
+        "agent": "Network Agent",
+        "message": "\u2705 Network validation passed: Network validation complete. 0 warnings."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:27.567922",
+        "agent": "Security Agent",
+        "message": "\ud83d\udd10 Starting security compliance validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:28.564447",
+        "agent": "Security Agent",
+        "message": "\u2705 Security compliance passed: Security validation complete. No issues found."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:29.569047",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Validation passed - Proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:30.563849",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:32.589191",
+        "agent": "Deploy Agent",
+        "message": "\u23f3 Waiting for infrastructure to provision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:53:33.616445",
+        "agent": "Deploy Agent",
+        "message": "\u2705 Deployment completed successfully!"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_C8456FDF",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config2.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:56:44.650894",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T18:56:57.832684"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T18:56:57.842638"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:56:44.701318",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:45.718116",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:45.733686",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config2.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:46.737408",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:46.753039",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:46.776022",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:51.771206",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:54.475352",
+        "agent": "Deploy Agent",
+        "message": "\u274c Validation failed: File config2.yaml: Invalid MTU 9999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:54.502053",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:54.841120",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:56.708572",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udccb Rollback recommendation: NEEDED"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:56.733675",
+        "agent": "Rollback Agent",
+        "message": "\u26a0\ufe0f Reason: Deployment failed: File config2.yaml: Invalid MTU 9999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:56.733675",
+        "agent": "Rollback Agent",
+        "message": "\u2753 Awaiting confirmation to proceed with rollback..."
+      },
+      {
+        "timestamp": "2026-05-18T18:56:57.770606",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:57.790393",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: Deployment failed: File config2.yaml: Invalid MTU 9999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:57.790393",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:57.806018",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 45s"
+      },
+      {
+        "timestamp": "2026-05-18T18:56:57.817051",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_FAE452BE",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config2.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T18:59:05.445289",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T18:59:17.960013"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T18:59:17.975642"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T18:59:05.487556",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:06.494663",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:06.515347",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config2.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:07.512027",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:07.521561",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:07.546327",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:12.561543",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:14.203887",
+        "agent": "Deploy Agent",
+        "message": "\u274c Validation failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:14.214730",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:15.193831",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:16.831307",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udccb Rollback recommendation: NEEDED"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:16.841290",
+        "agent": "Rollback Agent",
+        "message": "\u26a0\ufe0f Reason: Deployment failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:16.853278",
+        "agent": "Rollback Agent",
+        "message": "\u2753 Awaiting confirmation to proceed with rollback..."
+      },
+      {
+        "timestamp": "2026-05-18T18:59:17.893847",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:17.927693",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: Deployment failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:17.938815",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:17.944354",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 45s"
+      },
+      {
+        "timestamp": "2026-05-18T18:59:17.944354",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_DCD85834",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config2.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T19:00:43.542187",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T19:00:56.140782"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T19:00:56.140782"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T19:00:43.574589",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:44.580693",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:44.596249",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config2.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:45.626679",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:45.626679",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:45.650649",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:50.353979",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Deploy Agent analyzing configurations..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:52.784767",
+        "agent": "Deploy Agent",
+        "message": "\u274c Validation failed: File config2.yaml: Invalid MTU 9999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:52.797754",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:53.134318",
+        "agent": "Rollback Agent",
+        "message": "\ud83e\udde0 Rollback Agent analyzing failure and planning recovery..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:55.040912",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udccb Rollback recommendation: NEEDED"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:55.051912",
+        "agent": "Rollback Agent",
+        "message": "\u26a0\ufe0f Reason: Deployment failed: File config2.yaml: Invalid MTU 9999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:55.062913",
+        "agent": "Rollback Agent",
+        "message": "\u2753 Awaiting confirmation to proceed with rollback..."
+      },
+      {
+        "timestamp": "2026-05-18T19:00:56.081594",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:56.101849",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: Deployment failed: File config2.yaml: Invalid MTU 9999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:56.104009",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:56.119625",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 45s"
+      },
+      {
+        "timestamp": "2026-05-18T19:00:56.119625",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_3C679324",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config2.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-18T19:04:10.971213",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-18T19:04:21.813962"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-18T19:04:21.832500"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-18T19:04:10.998521",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\ude80 Deploy Agent started - Waiting for task assignment..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:12.008357",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udce5 Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:12.023054",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udcc4 Read file: config2.yaml"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:13.043781",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Analyzing YAML configuration..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:13.056067",
+        "agent": "Deploy Agent",
+        "message": "\ud83e\udde0 Starting CrewAI multi-agent validation..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:13.068358",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd0d Starting YAML configuration validation..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:18.646485",
+        "agent": "Deploy Agent",
+        "message": "\u274c Validation failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:18.660090",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udd04 Analyzing failure for rollback decision..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:20.711181",
+        "agent": "Rollback Agent",
+        "message": "\ud83d\udccb Rollback recommendation: NEEDED"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:20.721906",
+        "agent": "Rollback Agent",
+        "message": "\u26a0\ufe0f Reason: Deployment failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:20.732405",
+        "agent": "Rollback Agent",
+        "message": "\u2753 Awaiting confirmation to proceed with rollback..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:21.741170",
+        "agent": "Deploy Agent",
+        "message": "\u274c Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:21.763764",
+        "agent": "Deploy Agent",
+        "message": "\ud83d\udd04 Rollback Agent: Deployment failed: File config2.yaml: Invalid MTU 99999 (valid range: 68-9000)"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:21.788272",
+        "agent": "Deploy Agent",
+        "message": "\u26a0\ufe0f Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:21.800279",
+        "agent": "Deploy Agent",
+        "message": "\u23f1\ufe0f Est. Recovery Time: 45s"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:21.809456",
+        "agent": "Deploy Agent",
+        "message": "\u2753 Rollback awaiting confirmation..."
+      },
+      {
+        "timestamp": "2026-05-18T19:04:30.605443",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:30.605443",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:30.605443",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:30.605443",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-18T19:04:30.605443",
+        "agent": "Rollback Agent",
+        "message": "\u2705 Rollback executed successfully"
+      }
+    ]
+  }
+]

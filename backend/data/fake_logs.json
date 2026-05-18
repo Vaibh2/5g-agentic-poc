@@ -1,0 +1,34 @@
+[
+  {
+    "log_id": "log_001",
+    "deployment_id": "dep_SEED01",
+    "timestamp": "2025-05-10T14:22:11",
+    "level": "ERROR",
+    "source": "SECTOR-7-NODE-04",
+    "message": "Packet fragmentation detected: MTU mismatch on uplink interface eth0"
+  },
+  {
+    "log_id": "log_002",
+    "deployment_id": "dep_SEED01",
+    "timestamp": "2025-05-10T14:22:13",
+    "level": "CRITICAL",
+    "source": "CORE-ROUTER-02",
+    "message": "Latency threshold breached: 987ms avg RTT on SECTOR-7 fabric"
+  },
+  {
+    "log_id": "log_003",
+    "deployment_id": "dep_SEED01",
+    "timestamp": "2025-05-10T14:22:18",
+    "level": "ERROR",
+    "source": "SECTOR-7-NODE-11",
+    "message": "Excessive CPU utilization: 94% — reassembly queue overflow"
+  },
+  {
+    "log_id": "log_004",
+    "deployment_id": "dep_SEED02",
+    "timestamp": "2025-05-12T09:04:55",
+    "level": "WARN",
+    "source": "BGP-CONTROLLER-01",
+    "message": "BGP route flap detected: SECTOR-7 primary path oscillating"
+  }
+]

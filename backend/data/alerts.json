@@ -1,0 +1,66 @@
+[
+  {
+    "alert_id": "ALT_0001",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 1063ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 1063,
+      "packet_loss_pct": 19.9,
+      "cpu_usage_pct": 85,
+      "throughput_gbps": 1.9,
+      "error_rate_pct": 17.7,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-17T10:01:45.847721",
+    "resolved": true,
+    "resolved_at": "2026-05-17T10:51:00.507852"
+  },
+  {
+    "alert_id": "ALT_0002",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 817ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 817,
+      "packet_loss_pct": 36.2,
+      "cpu_usage_pct": 93,
+      "throughput_gbps": 2.6,
+      "error_rate_pct": 12.1,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-17T10:02:45.907727",
+    "resolved": true,
+    "resolved_at": "2026-05-17T10:51:00.507852"
+  },
+  {
+    "alert_id": "ALT_0003",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 944ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 944,
+      "packet_loss_pct": 38.9,
+      "cpu_usage_pct": 89,
+      "throughput_gbps": 2.4,
+      "error_rate_pct": 25.2,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-17T11:03:59.261495",
+    "resolved": true,
+    "resolved_at": "2026-05-17T11:05:29.289055"
+  },
+  {
+    "alert_id": "ALT_0004",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 868ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 868,
+      "packet_loss_pct": 24.3,
+      "cpu_usage_pct": 97,
+      "throughput_gbps": 3.1,
+      "error_rate_pct": 27.5,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-18T17:04:29.991048",
+    "resolved": true,
+    "resolved_at": "2026-05-18T17:06:16.299981"
+  }
+]

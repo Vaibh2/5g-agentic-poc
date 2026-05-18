@@ -1,0 +1,118 @@
+[
+  {
+    "decision_id": "DEC_105100",
+    "deployment_id": "dep_CE0C9A",
+    "timestamp": "2026-05-17T10:51:00.507852",
+    "metrics_at_analysis": {
+      "latency_ms": 817,
+      "packet_loss_pct": 36.2,
+      "cpu_usage_pct": 93,
+      "throughput_gbps": 2.6,
+      "error_rate_pct": 12.1,
+      "status": "CRITICAL",
+      "timestamp": "2026-05-17T10:50:59.506489"
+    },
+    "similar_incidents": [
+      {
+        "id": "inc_001",
+        "title": "MTU Misconfiguration - Packet Fragmentation",
+        "description": "Routing update changed MTU from 1500 to 9000 without enabling jumbo frame support end-to-end. Caused massive packet fragmentation across SECTOR-3 towers.",
+        "symptoms": "Latency spike 900ms, packet loss 22%, CPU 91%",
+        "root_cause": "MTU mismatch between core and edge nodes caused fragmentation",
+        "resolution": "Reverted MTU to 1500, service restored in 38 seconds",
+        "config_change": "network/mtu_settings.tf",
+        "impact_duration_minutes": 4,
+        "similarity_score": 0.109
+      },
+      {
+        "id": "inc_002",
+        "title": "BGP Route Flapping - SECTOR-7",
+        "description": "BGP failover timeout set too aggressively caused continuous route flapping between primary and backup paths.",
+        "symptoms": "Intermittent latency spikes 300-600ms, packet loss 8%",
+        "root_cause": "BGP timer misconfiguration in sector_7 routing policy",
+        "resolution": "Adjusted failover_timeout from 10s to 30s, stabilized routes",
+        "config_change": "network/bgp.tf",
+        "impact_duration_minutes": 12,
+        "similarity_score": 0.065
+      },
+      {
+        "id": "inc_004",
+        "title": "Null Route Injection - Maintenance Window",
+        "description": "Maintenance script accidentally injected null routes into the routing table during off-peak window.",
+        "symptoms": "Complete packet loss on 12 towers, latency 9999ms (timeout)",
+        "root_cause": "Maintenance script regex matched too broadly, deleted valid routes",
+        "resolution": "Emergency rollback via backup config snapshot",
+        "config_change": "scripts/maintenance_cleanup.sh",
+        "impact_duration_minutes": 18,
+        "similarity_score": 0.062
+      }
+    ],
+    "llm_analysis": {
+      "root_cause": "MTU size increased to 9000 without jumbo frame support on edge nodes, causing packet fragmentation and reassembly overhead",
+      "confidence": 0.91,
+      "affected_services": [
+        "SECTOR-7 tower cluster",
+        "Core routing fabric",
+        "UE handover controller"
+      ],
+      "reasoning_trace": [
+        "Diff shows MTU change from 1500\u21929000 in routing config",
+        "Latency spike (900ms+) consistent with fragmentation overhead",
+        "Packet loss 22% matches fragmentation drop pattern",
+        "Historical incident INC-001 shows identical symptom fingerprint",
+        "CPU spike caused by reassembly processing on tower controllers"
+      ],
+      "recommended_action": "ROLLBACK",
+      "severity": "CRITICAL",
+      "estimated_recovery_seconds": 43
+    },
+    "autonomous_action_taken": "ROLLBACK",
+    "rollback_result": {
+      "rollback_id": "RBK_105100",
+      "deployment_id": "dep_CE0C9A",
+      "status": "success",
+      "timestamp": "2026-05-17T10:51:00.507852",
+      "message": "Previous stable configuration restored. Network metrics normalized.",
+      "recovery_actions": [
+        "Reverted routing config to last stable version",
+        "MTU reset to 1500 across all nodes",
+        "BGP routes re-converged",
+        "Monitoring confirmed baseline restoration"
+      ]
+    },
+    "timeline": [
+      {
+        "ts": "2026-05-17T10:50:59.506489",
+        "msg": "Starting analysis for deployment dep_CE0C9A"
+      },
+      {
+        "ts": "2026-05-17T10:50:59.506489",
+        "msg": "Fetched current network metrics"
+      },
+      {
+        "ts": "2026-05-17T10:50:59.506489",
+        "msg": "Found 2 active alerts"
+      },
+      {
+        "ts": "2026-05-17T10:50:59.506489",
+        "msg": "Retrieved 3 similar historical incidents via RAG"
+      },
+      {
+        "ts": "2026-05-17T10:50:59.506489",
+        "msg": "LLM analysis complete"
+      },
+      {
+        "ts": "2026-05-17T10:50:59.506489",
+        "msg": "Confidence score: 91% | Recommended: ROLLBACK"
+      },
+      {
+        "ts": "2026-05-17T10:50:59.506489",
+        "msg": "Confidence threshold met \u2014 executing autonomous rollback"
+      },
+      {
+        "ts": "2026-05-17T10:51:00.507852",
+        "msg": "Rollback complete \u2014 network restored"
+      }
+    ]
+  }
+]

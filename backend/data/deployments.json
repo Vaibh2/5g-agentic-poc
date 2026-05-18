@@ -1,0 +1,127 @@
+[
+  {
+    "deployment_id": "dep_CE0C9A",
+    "config_name": "routing-config-v24",
+    "config_version": "v20",
+    "status": "rolled_back",
+    "timestamp": "2026-05-17T10:50:15.003543",
+    "deployed_by": "ci-pipeline",
+    "diff": {
+      "change_summary": "Optimized MTU size from 1500 to 9000 for jumbo frames",
+      "files_changed": [
+        "network/routing.tf",
+        "network/mtu_settings.tf"
+      ],
+      "lines_added": 14,
+      "lines_removed": 3,
+      "risk_level": "HIGH",
+      "diff_snippet": "- mtu_size = 1500\n+ mtu_size = 9000\n+ enable_jumbo_frames = true\n+ fragmentation_policy = \"none\""
+    },
+    "logs": [
+      "[2026-05-17T10:50:15.003543] Initiating deployment dep_CE0C9A",
+      "[2026-05-17T10:50:15.003543] Applying Terraform config: routing-config-v24",
+      "[2026-05-17T10:50:15.003543] Pushing to 5G tower cluster: SECTOR-7",
+      "[2026-05-17T10:50:15.003543] Config propagated to 48 nodes"
+    ],
+    "rollback_timestamp": "2026-05-17T10:51:00.507597"
+  },
+  {
+    "deployment_id": "dep_25242D",
+    "config_name": "routing-config-v24",
+    "config_version": "v27",
+    "status": "deploying",
+    "timestamp": "2026-05-17T11:01:04.002079",
+    "deployed_by": "ci-pipeline",
+    "diff": {
+      "change_summary": "Optimized MTU size from 1500 to 9000 for jumbo frames",
+      "files_changed": [
+        "network/routing.tf",
+        "network/mtu_settings.tf"
+      ],
+      "lines_added": 14,
+      "lines_removed": 3,
+      "risk_level": "HIGH",
+      "diff_snippet": "- mtu_size = 1500\n+ mtu_size = 9000\n+ enable_jumbo_frames = true\n+ fragmentation_policy = \"none\""
+    },
+    "logs": [
+      "[2026-05-17T11:01:04.002079] Initiating deployment dep_25242D",
+      "[2026-05-17T11:01:04.002079] Applying Terraform config: routing-config-v24",
+      "[2026-05-17T11:01:04.002079] Pushing to 5G tower cluster: SECTOR-7",
+      "[2026-05-17T11:01:04.002079] Config propagated to 48 nodes"
+    ]
+  },
+  {
+    "deployment_id": "dep_2A4569",
+    "config_name": "routing-config-v24",
+    "config_version": "v23",
+    "status": "deploying",
+    "timestamp": "2026-05-17T11:03:09.760410",
+    "deployed_by": "ci-pipeline",
+    "diff": {
+      "change_summary": "Optimized MTU size from 1500 to 9000 for jumbo frames",
+      "files_changed": [
+        "network/routing.tf",
+        "network/mtu_settings.tf"
+      ],
+      "lines_added": 14,
+      "lines_removed": 3,
+      "risk_level": "HIGH",
+      "diff_snippet": "- mtu_size = 1500\n+ mtu_size = 9000\n+ enable_jumbo_frames = true\n+ fragmentation_policy = \"none\""
+    },
+    "logs": [
+      "[2026-05-17T11:03:09.760410] Initiating deployment dep_2A4569",
+      "[2026-05-17T11:03:09.760410] Applying Terraform config: routing-config-v24",
+      "[2026-05-17T11:03:09.760410] Pushing to 5G tower cluster: SECTOR-7",
+      "[2026-05-17T11:03:09.760410] Config propagated to 48 nodes"
+    ]
+  },
+  {
+    "deployment_id": "dep_D5C29A",
+    "config_name": "routing-config-v24",
+    "config_version": "v25",
+    "status": "deploying",
+    "timestamp": "2026-05-18T17:03:55.716330",
+    "deployed_by": "ci-pipeline",
+    "diff": {
+      "change_summary": "Optimized MTU size from 1500 to 9000 for jumbo frames",
+      "files_changed": [
+        "network/routing.tf",
+        "network/mtu_settings.tf"
+      ],
+      "lines_added": 14,
+      "lines_removed": 3,
+      "risk_level": "HIGH",
+      "diff_snippet": "- mtu_size = 1500\n+ mtu_size = 9000\n+ enable_jumbo_frames = true\n+ fragmentation_policy = \"none\""
+    },
+    "logs": [
+      "[2026-05-18T17:03:55.716330] Initiating deployment dep_D5C29A",
+      "[2026-05-18T17:03:55.716330] Applying Terraform config: routing-config-v24",
+      "[2026-05-18T17:03:55.716330] Pushing to 5G tower cluster: SECTOR-7",
+      "[2026-05-18T17:03:55.716330] Config propagated to 48 nodes"
+    ]
+  },
+  {
+    "deployment_id": "dep_58281D",
+    "config_name": "routing-config-v23",
+    "config_version": "v26",
+    "status": "deploying",
+    "timestamp": "2026-05-18T17:05:08.740026",
+    "deployed_by": "ci-pipeline",
+    "diff": {
+      "change_summary": "Added BGP route optimization for sector 7",
+      "files_changed": [
+        "network/bgp.tf"
+      ],
+      "lines_added": 6,
+      "lines_removed": 2,
+      "risk_level": "MEDIUM",
+      "diff_snippet": "+ bgp_route_preference = \"sector_7_primary\"\n+ failover_timeout = 30"
+    },
+    "logs": [
+      "[2026-05-18T17:05:08.740026] Initiating deployment dep_58281D",
+      "[2026-05-18T17:05:08.740026] Applying Terraform config: routing-config-v23",
+      "[2026-05-18T17:05:08.740026] Pushing to 5G tower cluster: SECTOR-7",
+      "[2026-05-18T17:05:08.741024] Config propagated to 48 nodes"
+    ]
+  }
+]

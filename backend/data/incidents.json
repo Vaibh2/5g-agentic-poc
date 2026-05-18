@@ -1,0 +1,42 @@
+[
+  {
+    "id": "inc_001",
+    "title": "MTU Misconfiguration - Packet Fragmentation",
+    "description": "Routing update changed MTU from 1500 to 9000 without enabling jumbo frame support end-to-end. Caused massive packet fragmentation across SECTOR-3 towers.",
+    "symptoms": "Latency spike 900ms, packet loss 22%, CPU 91%",
+    "root_cause": "MTU mismatch between core and edge nodes caused fragmentation",
+    "resolution": "Reverted MTU to 1500, service restored in 38 seconds",
+    "config_change": "network/mtu_settings.tf",
+    "impact_duration_minutes": 4
+  },
+  {
+    "id": "inc_002",
+    "title": "BGP Route Flapping - SECTOR-7",
+    "description": "BGP failover timeout set too aggressively caused continuous route flapping between primary and backup paths.",
+    "symptoms": "Intermittent latency spikes 300-600ms, packet loss 8%",
+    "root_cause": "BGP timer misconfiguration in sector_7 routing policy",
+    "resolution": "Adjusted failover_timeout from 10s to 30s, stabilized routes",
+    "config_change": "network/bgp.tf",
+    "impact_duration_minutes": 12
+  },
+  {
+    "id": "inc_003",
+    "title": "CPU Throttle - QoS Policy Overload",
+    "description": "New QoS policy introduced excessive deep packet inspection on all traffic, overwhelming CPU on tower controllers.",
+    "symptoms": "CPU 96%, throughput dropped 70%, error rate 18%",
+    "root_cause": "QoS policy applied DPI universally instead of only priority traffic",
+    "resolution": "Rolled back QoS config, scoped DPI to VoNR traffic only",
+    "config_change": "network/qos_policy.tf",
+    "impact_duration_minutes": 7
+  },
+  {
+    "id": "inc_004",
+    "title": "Null Route Injection - Maintenance Window",
+    "description": "Maintenance script accidentally injected null routes into the routing table during off-peak window.",
+    "symptoms": "Complete packet loss on 12 towers, latency 9999ms (timeout)",
+    "root_cause": "Maintenance script regex matched too broadly, deleted valid routes",
+    "resolution": "Emergency rollback via backup config snapshot",
+    "config_change": "scripts/maintenance_cleanup.sh",
+    "impact_duration_minutes": 18
+  }
+]
