@@ -1,6 +1,3 @@
-# 5G Network Configuration
-# Core network settings for 5G tower sector deployment
-
 network:
   name: "5G-CORE-PROD"
   type: "standalone"
@@ -21,7 +18,7 @@ sector:
       bandwidth_mhz: 400
 
 routing:
-  mtu_size: 9999
+  mtu_size: 99999
   bgp_asn: 65001
   bgp_route_preference: "auto"
   peering:
