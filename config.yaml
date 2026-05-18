@@ -21,7 +21,7 @@ sector:
       bandwidth_mhz: 400
 
 routing:
-  mtu_size: 15000
+  mtu_size: 150000
   bgp_asn: 65001
   bgp_route_preference: "auto"
   peering:
