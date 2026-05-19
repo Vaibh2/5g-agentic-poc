@@ -16,6 +16,8 @@ except ImportError as e:
     CREWAI_AVAILABLE = False
     print(f"⚠️ CrewAI not available - using mock mode: {e}", file=sys.stderr)
 
+from services.slack_notification import send_workflow_alert
+
 WORKFLOWS_FILE = Path(__file__).parent.parent / "data" / "workflows.json"
 
 
@@ -103,12 +105,30 @@ class DeployAgent:
             await asyncio.sleep(1)
             _update_workflow(workflow_id, narration="✅ Deployment completed successfully!")
             _update_workflow(workflow_id, status="SUCCESS")
+
+            send_workflow_alert(
+                workflow_id=workflow_id,
+                status="SUCCESS",
+                files=files
+            )
         else:
             agent_results = analysis_result.get("agent_results", {})
             rollback_info = agent_results.get("rollback", {})
             
             _update_workflow(workflow_id, narration=f"❌ Deployment failed: {analysis_result.get('error', 'Unknown error')}")
             _update_workflow(workflow_id, status="FAILED")
+
+            rollback_reason = None
+            if rollback_info:
+                rollback_reason = rollback_info.get("reason", "Analysis failed")
+
+            send_workflow_alert(
+                workflow_id=workflow_id,
+                status="FAILED",
+                files=files,
+                error_message=analysis_result.get("error", "Unknown error"),
+                rollback_reason=rollback_reason
+            )
             
             # Show rollback agent's recommendation
             if rollback_info:

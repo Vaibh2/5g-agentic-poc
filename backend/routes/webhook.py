@@ -8,6 +8,8 @@ from datetime import datetime
 from pathlib import Path
 import logging
 
+from services.slack_notification import send_rollback_alert
+
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
@@ -125,9 +127,16 @@ async def confirm_rollback(payload: RollbackConfirmPayload):
             "message": "✅ Rollback executed successfully"
         })
         wf["status"] = "ROLLED_BACK"
-        
+
         _save_workflows(workflows)
-        
+
+        send_rollback_alert(
+            deployment_id=wf.get("deployment_id", "N/A"),
+            config_name=wf.get("config_name", "N/A"),
+            reason="Manual rollback confirmed by user",
+            workflow_id=payload.workflow_id
+        )
+
         return {"success": True, "message": "Rollback executed"}
     else:
         wf["agent_narrations"].append({
