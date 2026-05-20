@@ -13,9 +13,6 @@ sector:
     - cell_id: "CELL-7B"
       frequency_band: "n78"
       bandwidth_mhz: 100
-    - cell_id: "CELL-7C"
-      frequency_band: "n257"
-      bandwidth_mhz: 400
 
 routing:
   mtu_size: 1500
@@ -24,7 +21,7 @@ routing:
   peering:
     - peer_asn: 65002
       peer_ip: "10.7.0.2"
-      prefix_limit: 1000
+      prefix_limit: 100
   qos_policy: "enhanced"
 
 transport:
@@ -36,21 +33,15 @@ security:
   encryption: "aes-256-gcm"
   authentication: "mutual-tls"
   firewall_rules:
-    - rule_id: "ALLOW-5G-CORE"
-      source: "10.0.0.0/8"
-      destination: "10.0.0.0/8"
-      port: 5000-6000
-      protocol: "tcp"
-      action: "permit"
-    - rule_id: "ALLOW-MGMT"
-      source: "172.16.0.0/12"
-      destination: "10.0.0.0/8"
-      port: 22
-      protocol: "tcp"
+    - rule_id: "ALLOW-5G-CONTROL"
+      source: "10.0.0.0/24"
+      destination: "10.0.0.0/24"
+      port: 38412
+      protocol: "sctp"
       action: "permit"
     - rule_id: "ALLOW-BGP"
-      source: "10.7.0.0/24"
-      destination: "10.7.0.0/24"
+      source: "10.7.0.2/32"
+      destination: "10.7.0.1/32"
       port: 179
       protocol: "tcp"
       action: "permit"
@@ -66,7 +57,6 @@ monitoring:
     - packet_loss_pct
     - cpu_usage_pct
     - throughput_gbps
-    - error_rate_pct
   alert_thresholds:
     latency_ms: 500
     packet_loss_pct: 5
