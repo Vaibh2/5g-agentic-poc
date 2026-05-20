@@ -5,6 +5,7 @@ autonomous rollback decision, and RCA generation.
 
 import json
 import os
+import sys
 import asyncio
 from datetime import datetime
 from pathlib import Path
@@ -20,11 +21,11 @@ from services.monitoring_service import MonitoringService
 from services.deployment_service import DeploymentService
 from services.rag_service import RAGService
 from services.rollback_service import RollbackService
-from services.zai_client import chat_complete as zai_chat_complete, get_zai_client
+from services.zai_client import chat_complete as openai_chat_complete, get_openai_client
 
 DECISIONS_FILE = Path(__file__).parent.parent / "data" / "decisions.json"
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-MODEL = "gemini-3-flash-preview"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+MODEL = "gpt-5.4-mini-2026-03-17"
 CONFIDENCE_THRESHOLD = 0.80
 
 
@@ -140,18 +141,18 @@ Analyze: did this deployment cause the current anomaly? Output JSON only.
     @staticmethod
     async def _call_llm(user_prompt: str) -> dict:
         try:
-            zai = get_zai_client()
-            if zai:
+            openai = get_openai_client()
+            if openai:
                 messages = [
                     {"role": "system", "content": SYSTEM_PROMPT},
                     {"role": "user", "content": user_prompt},
                 ]
-                response_text = await zai_chat_complete(messages, model="glm-4-0520")
+                response_text = await openai_chat_complete(messages, model="gpt-5.4-mini-2026-03-17")
                 return json.loads(response_text)
-        except Exception as zai_err:
-            print(f"ZAI call failed: {zai_err}, trying Gemini fallback...", file=sys.stderr)
+        except Exception as openai_err:
+            print(f"OpenAI call failed: {openai_err}, using fallback...", file=sys.stderr)
 
-        if not GEMINI_API_KEY:
+        if not OPENAI_API_KEY:
             return {
                 "root_cause": "MTU size increased to 9000 without jumbo frame support on edge nodes, causing packet fragmentation and reassembly overhead",
                 "confidence": 0.91,
@@ -169,23 +170,19 @@ Analyze: did this deployment cause the current anomaly? Output JSON only.
             }
 
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={GEMINI_API_KEY}"
-            payload = {
-                "contents": [{"parts": [{"text": f"{SYSTEM_PROMPT}\n\n{user_prompt}"}]}],
-                "generationConfig": {
-                    "temperature": 0.7,
-                    "maxOutputTokens": 1000,
-                }
-            }
-            async with httpx.AsyncClient(timeout=30) as client:
-                resp = await client.post(url, json=payload)
-                data = resp.json()
-                if "candidates" in data and len(data["candidates"]) > 0:
-                    text = data["candidates"][0]["content"]["parts"][0]["text"]
-                    text = text.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
-                    return json.loads(text)
-                else:
-                    raise Exception(f"Unexpected Gemini response: {data}")
+            client = get_openai_client()
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": user_prompt},
+                ],
+                temperature=0.7,
+                max_tokens=1000,
+            )
+            text = response.choices[0].message.content.strip()
+            text = text.strip().lstrip("```json").lstrip("```").rstrip("```").strip()
+            return json.loads(text)
         except Exception as e:
             return {
                 "root_cause": f"LLM call failed: {str(e)}",

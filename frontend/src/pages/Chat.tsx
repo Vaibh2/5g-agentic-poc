@@ -67,7 +67,7 @@ export const Chat: React.FC = () => {
   return (
     <div className="space-y-6 h-[calc(100vh-140px)] flex flex-col">
       <div>
-        <h1 className="text-2xl font-bold">💬 Network Assistant</h1>
+        <h1 className="text-2xl font-bold">Network Assistant</h1>
         <p className="text-gray-400 mt-1">
           Ask questions or trigger actions like deployments, rollbacks, etc.
         </p>

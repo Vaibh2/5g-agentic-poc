@@ -8,11 +8,11 @@ interface LayoutProps {
 }
 
 const tabs = [
-  { id: "dashboard", label: "🏠 Operations Dashboard", icon: "🏠" },
-  { id: "deploy", label: "🚀 Deploy", icon: "🚀" },
-  { id: "workflows", label: "📦 Workflows", icon: "📦" },
-  { id: "incidents", label: "📋 Incidents & RCA", icon: "📋" },
-  { id: "chat", label: "💬 Chat", icon: "💬" },
+  { id: "dashboard", label: "Operations Dashboard", icon: "dashboard" },
+  { id: "deploy", label: "Deploy", icon: "deploy" },
+  { id: "workflows", label: "Workflows", icon: "workflows" },
+  { id: "incidents", label: "Incidents & RCA", icon: "incidents" },
+  { id: "chat", label: "Chat", icon: "chat" },
 ];
 
 export const Layout: React.FC<LayoutProps> = ({
@@ -47,7 +47,7 @@ export const Layout: React.FC<LayoutProps> = ({
       {/* Sidebar */}
       <aside className="w-64 bg-dark-900 border-r border-dark-700 p-4 flex flex-col">
         <div className="mb-6">
-          <h1 className="text-xl font-bold text-white">📡 5G Agentic AI Ops</h1>
+          <h1 className="text-xl font-bold text-white">5G Agentic AI Ops</h1>
           <p className="text-sm text-gray-400 mt-1">Autonomous Self-Healing Infrastructure</p>
         </div>
 
@@ -86,7 +86,7 @@ export const Layout: React.FC<LayoutProps> = ({
             onClick={handleRefresh}
             className="mt-3 w-full bg-dark-700 hover:bg-dark-600 text-gray-300 px-3 py-2 rounded-lg text-sm transition-colors"
           >
-            🔄 Refresh
+            Refresh
           </button>
         </div>
       </aside>

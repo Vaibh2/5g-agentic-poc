@@ -12,8 +12,8 @@ from services.rag_service import RAGService
 from services.rollback_service import RollbackService
 
 MEMORY_FILE = Path(__file__).parent.parent / "data" / "memory.json"
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-MODEL = "gemini-3-flash-preview"
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+MODEL = "gpt-5.4-mini-2026-03-17"
 
 SYSTEM_PROMPT = """You are a helpful 5G network operations assistant. You can answer questions about network metrics, incidents, deployments, and help perform actions. 
 Provide clear, concise responses. If asked to perform an action, respond with the result."""
@@ -128,23 +128,24 @@ class ChatService:
         
         user_prompt = f"""CONTEXT:\n{context}\n\nUSER QUESTION: {message}\n\nProvide a helpful, concise answer based on the context above."""
         
-        if not GEMINI_API_KEY:
+        if not OPENAI_API_KEY:
             return ChatService._mock_response(message_lower, metrics, alerts, deployments)
         
         try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={GEMINI_API_KEY}"
-            payload = {
-                "contents": [{"parts": [{"text": f"{SYSTEM_PROMPT}\n\n{user_prompt}"}]}],
-                "generationConfig": {"temperature": 0.7, "maxOutputTokens": 500}
-            }
-            async with httpx.AsyncClient(timeout=30) as client:
-                resp = await client.post(url, json=payload)
-                data = resp.json()
-                if "candidates" in data and len(data["candidates"]) > 0:
-                    return data["candidates"][0]["content"]["parts"][0]["text"]
-                return f"Error: Unexpected response from Gemini"
+            from openai import OpenAI
+            client = OpenAI(api_key=OPENAI_API_KEY)
+            response = client.chat.completions.create(
+                model=MODEL,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": user_prompt},
+                ],
+                temperature=0.7,
+                max_tokens=500,
+            )
+            return response.choices[0].message.content
         except Exception as e:
-            return f"Error calling Gemini: {str(e)}. Using fallback response.\n\n{ChatService._mock_response(message_lower, metrics, alerts, deployments)}"
+            return f"Error calling OpenAI: {str(e)}. Using fallback response.\n\n{ChatService._mock_response(message_lower, metrics, alerts, deployments)}"
 
     @staticmethod
     def _mock_response(message_lower: str, metrics: dict, alerts: list, deployments: list) -> str:

@@ -6,15 +6,15 @@ from datetime import datetime
 from pathlib import Path
 from typing import List
 
-print("📦 Loading deploy_agent.py...", file=sys.stderr)
+print("[INIT] Loading deploy_agent.py...", file=sys.stderr)
 
 try:
     from services.crew_agents import Orchestrator, CrewAgents
     CREWAI_AVAILABLE = True
-    print("✅ CrewAI module imported successfully", file=sys.stderr)
+    print("[INIT] CrewAI module imported successfully", file=sys.stderr)
 except ImportError as e:
     CREWAI_AVAILABLE = False
-    print(f"⚠️ CrewAI not available - using mock mode: {e}", file=sys.stderr)
+    print(f"[INIT] CrewAI not available - using mock mode: {e}", file=sys.stderr)
 
 from services.slack_notification import send_workflow_alert
 
@@ -57,10 +57,10 @@ class DeployAgent:
     
     @staticmethod
     async def run(workflow_id: str, files: List[str], repo_path: str):
-        _update_workflow(workflow_id, narration="🚀 Deploy Agent started - Waiting for task assignment...")
+        _update_workflow(workflow_id, narration="Deploy Agent initialized - awaiting task assignment...")
         
         await asyncio.sleep(1)
-        _update_workflow(workflow_id, status="RUNNING", narration="📥 Fetching changed files from repository...")
+        _update_workflow(workflow_id, status="RUNNING", narration="Fetching changed files from repository...")
         
         yaml_contents = []
         for file_path in files:
@@ -75,9 +75,9 @@ class DeployAgent:
             
             if content is None:
                 content = f"# Mock config from {file_path}\nmtu: 1500\nnetwork: 5g\nsector: test-sector\n"
-                _update_workflow(workflow_id, narration=f"📄 Using default config for: {file_path}")
+                _update_workflow(workflow_id, narration=f"Using default configuration for: {file_path}")
             else:
-                _update_workflow(workflow_id, narration=f"📄 Read file: {file_path}")
+                _update_workflow(workflow_id, narration=f"Configuration file loaded: {file_path}")
             
             yaml_contents.append({
                 "file": file_path,
@@ -85,11 +85,11 @@ class DeployAgent:
             })
         
         if not yaml_contents:
-            _update_workflow(workflow_id, status="FAILED", narration="❌ No valid YAML files found to deploy")
+            _update_workflow(workflow_id, status="FAILED", narration="No valid YAML files found to deploy")
             return
         
         await asyncio.sleep(1)
-        _update_workflow(workflow_id, narration="🔍 Analyzing YAML configuration...")
+        _update_workflow(workflow_id, narration="Analyzing YAML configuration structure and parameters...")
         
         # Run CrewAI agent to analyze
         analysis_result = await DeployAgent._run_crewai_analysis(yaml_contents, workflow_id)
@@ -97,13 +97,13 @@ class DeployAgent:
         await asyncio.sleep(1)
         
         if analysis_result.get("success"):
-            _update_workflow(workflow_id, narration="✅ Validation passed - Proceeding with deployment...")
+            _update_workflow(workflow_id, narration="Validation passed - proceeding with deployment...")
             await asyncio.sleep(1)
-            _update_workflow(workflow_id, narration="🚀 Initiating deployment to 5G infrastructure...")
+            _update_workflow(workflow_id, narration="Initiating deployment to 5G infrastructure...")
             await asyncio.sleep(2)
-            _update_workflow(workflow_id, narration="⏳ Waiting for infrastructure to provision...")
+            _update_workflow(workflow_id, narration="Waiting for infrastructure provisioning to complete...")
             await asyncio.sleep(1)
-            _update_workflow(workflow_id, narration="✅ Deployment completed successfully!")
+            _update_workflow(workflow_id, narration="Deployment completed successfully - all services operational")
             _update_workflow(workflow_id, status="SUCCESS")
 
             send_workflow_alert(
@@ -115,7 +115,7 @@ class DeployAgent:
             agent_results = analysis_result.get("agent_results", {})
             rollback_info = agent_results.get("rollback", {})
             
-            _update_workflow(workflow_id, narration=f"❌ Deployment failed: {analysis_result.get('error', 'Unknown error')}")
+            _update_workflow(workflow_id, narration=f"Deployment failed: {analysis_result.get('error', 'Unknown error')}")
             _update_workflow(workflow_id, status="FAILED")
 
             rollback_reason = None
@@ -132,12 +132,12 @@ class DeployAgent:
             
             # Show rollback agent's recommendation
             if rollback_info:
-                _update_workflow(workflow_id, narration=f"🔄 Rollback Agent: {rollback_info.get('reason', 'Analyzing failure...')}")
-                _update_workflow(workflow_id, narration=f"⚠️ Risk Level: {rollback_info.get('risk_level', 'MEDIUM')}")
-                _update_workflow(workflow_id, narration=f"⏱️ Est. Recovery Time: {rollback_info.get('estimated_recovery_time', 30)}s")
+                _update_workflow(workflow_id, narration=f"Rollback Agent: {rollback_info.get('reason', 'Analyzing failure...')}")
+                _update_workflow(workflow_id, narration=f"Risk Level: {rollback_info.get('risk_level', 'MEDIUM')}")
+                _update_workflow(workflow_id, narration=f"Estimated Recovery Time: {rollback_info.get('estimated_recovery_time', 30)}s")
                 
                 if rollback_info.get("confirmation_required"):
-                    _update_workflow(workflow_id, narration="❓ Rollback awaiting confirmation...")
+                    _update_workflow(workflow_id, narration="Rollback awaiting operator confirmation...")
                     _update_workflow(workflow_id, step="ROLLBACK_PENDING")
             
             _update_workflow(workflow_id, step="ROLLBACK_NEEDED")
@@ -146,19 +146,19 @@ class DeployAgent:
     async def _run_crewai_analysis(yaml_contents: List[dict], workflow_id: str) -> dict:
         try:
             print(f"\n{'='*50}", file=sys.stderr)
-            print(f"🎯 [_run_crewai_analysis] Starting for workflow {workflow_id}", file=sys.stderr)
+            print(f"[_run_crewai_analysis] Starting for workflow {workflow_id}", file=sys.stderr)
             print(f"CREWAI_AVAILABLE: {CREWAI_AVAILABLE}", file=sys.stderr)
             print(f"{'='*50}\n", file=sys.stderr)
             
             if not CREWAI_AVAILABLE:
                 # Fallback to simple analysis
-                print("🎭 Using mock analysis (CREWAI not available)", file=sys.stderr)
-                _update_workflow(workflow_id, narration="🧠 Running validation (mock mode)...")
+                print("[ANALYSIS] Using mock analysis (CREWAI not available)", file=sys.stderr)
+                _update_workflow(workflow_id, narration="Running configuration validation (mock mode)...")
                 return await DeployAgent._simple_analysis(yaml_contents)
             
-            _update_workflow(workflow_id, narration="🧠 Starting CrewAI multi-agent validation...")
+            _update_workflow(workflow_id, narration="Starting multi-agent validation pipeline...")
             
-            print("🚀 Calling Orchestrator.run_full_validation()...", file=sys.stderr)
+            print("[ANALYSIS] Calling Orchestrator.run_full_validation()...", file=sys.stderr)
             
             # Use Orchestrator to run full agent pipeline
             validation_result = await Orchestrator.run_full_validation(
@@ -167,18 +167,18 @@ class DeployAgent:
                 deployment_context={"workflow_id": workflow_id}
             )
             
-            print(f"📊 Orchestrator returned: {validation_result.get('final_decision')}", file=sys.stderr)
+            print(f"[ANALYSIS] Orchestrator returned: {validation_result.get('final_decision')}", file=sys.stderr)
             
             # Extract result for deployment decision
             if validation_result["final_decision"] == "PROCEED":
-                print("✅ Deployment approved by agents", file=sys.stderr)
+                print("[ANALYSIS] Deployment approved by agents", file=sys.stderr)
                 return {
                     "success": True,
                     "summary": "All agent validations passed - proceeding with deployment",
                     "agent_results": validation_result["results"]
                 }
             else:
-                print("❌ Deployment rejected - rollback recommended", file=sys.stderr)
+                print("[ANALYSIS] Deployment rejected - rollback recommended", file=sys.stderr)
                 return {
                     "success": False,
                     "error": "Agent validation failed - rollback recommended",
@@ -188,7 +188,7 @@ class DeployAgent:
                 }
             
         except Exception as e:
-            print(f"❌ [_run_crewai_analysis] Error: {e}", file=sys.stderr)
+            print(f"[ANALYSIS] Error: {e}", file=sys.stderr)
             import traceback
             traceback.print_exc(file=sys.stderr)
             return {

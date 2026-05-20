@@ -5,5 +5,5 @@ pydantic>=2.11.9
 python-dotenv>=1.1.1
 requests>=2.32.5
 crewai>=0.6.0
-langchain-google-genai>=0.0.2
-zai-sdk>=1.0.0
+langchain-openai>=0.1.0
+openai>=1.0.0

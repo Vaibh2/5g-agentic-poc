@@ -12,7 +12,7 @@ logging.basicConfig(
 )
 
 # Redirect all prints to stderr for visibility in uvicorn
-print("🚀 Starting 5G Agentic AI Backend...", file=sys.stderr)
+print("Starting 5G Agentic AI Backend...", file=sys.stderr)
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware

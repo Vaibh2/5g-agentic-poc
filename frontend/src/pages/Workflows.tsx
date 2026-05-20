@@ -10,12 +10,12 @@ interface Workflow {
   agent_narrations?: { agent: string; message: string; timestamp: string }[];
 }
 
-const statusConfig: Record<string, { emoji: string; color: string; bg: string }> = {
-  QUEUED: { emoji: "⏳", color: "#f59e0b", bg: "#f59e0b" },
-  RUNNING: { emoji: "🔵", color: "#3b82f6", bg: "#3b82f6" },
-  SUCCESS: { emoji: "✅", color: "#22c55e", bg: "#22c55e" },
-  FAILED: { emoji: "❌", color: "#ef4444", bg: "#ef4444" },
-  ROLLED_BACK: { emoji: "🔁", color: "#ef4444", bg: "#ef4444" },
+const statusConfig: Record<string, { label: string; color: string; bg: string }> = {
+  QUEUED: { label: "QUEUED", color: "#f59e0b", bg: "#f59e0b" },
+  RUNNING: { label: "RUNNING", color: "#3b82f6", bg: "#3b82f6" },
+  SUCCESS: { label: "SUCCESS", color: "#22c55e", bg: "#22c55e" },
+  FAILED: { label: "FAILED", color: "#ef4444", bg: "#ef4444" },
+  ROLLED_BACK: { label: "ROLLED_BACK", color: "#ef4444", bg: "#ef4444" },
 };
 
 const agentColors: Record<string, string> = {
@@ -101,13 +101,13 @@ export const Workflows: React.FC = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold">📦 Deployment Workflows</h1>
+          <h1 className="text-2xl font-bold">Deployment Workflows</h1>
           <p className="text-gray-400 mt-1">
             Real-time deployment workflows triggered by code pushes from VSCode.
           </p>
         </div>
         <button onClick={handleRefresh} className="btn-secondary">
-          {refreshing ? "Refreshing..." : "🔄 Refresh"}
+          {refreshing ? "Refreshing..." : "Refresh"}
         </button>
       </div>
 
@@ -134,7 +134,7 @@ export const Workflows: React.FC = () => {
       ) : (
         <div className="space-y-4">
           {workflows.map((wf) => {
-            const config = statusConfig[wf.status] || { emoji: "❓", color: "text-gray-500", bg: "bg-gray-500" };
+            const config = statusConfig[wf.status] || { label: "UNKNOWN", color: "text-gray-500", bg: "bg-gray-500" };
             return (
               <div
                 key={wf.workflow_id}
@@ -143,7 +143,7 @@ export const Workflows: React.FC = () => {
                 {/* Header */}
                 <div className="flex justify-between items-center mb-3">
                   <span className="text-lg font-bold">
-                    {config.emoji} {wf.workflow_id}
+                    {wf.workflow_id}
                   </span>
                   <span
                     className="font-semibold rounded-md px-3 py-1 text-sm border"
@@ -196,13 +196,13 @@ export const Workflows: React.FC = () => {
                       onClick={() => handleRollback(wf.workflow_id, true)}
                       className="btn-primary text-sm"
                     >
-                      ✅ Confirm Rollback
+                      Confirm Rollback
                     </button>
                     <button
                       onClick={() => handleRollback(wf.workflow_id, false)}
                       className="btn-secondary text-sm"
                     >
-                      ❌ Cancel Rollback
+                      Cancel Rollback
                     </button>
                   </div>
                 )}

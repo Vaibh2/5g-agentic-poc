@@ -124,7 +124,7 @@ async def confirm_rollback(payload: RollbackConfirmPayload):
         wf["agent_narrations"].append({
             "timestamp": datetime.utcnow().isoformat(),
             "agent": "Rollback Agent",
-            "message": "✅ Rollback executed successfully"
+            "message": "Rollback executed successfully - services restored to previous stable state"
         })
         wf["status"] = "ROLLED_BACK"
 
@@ -142,7 +142,7 @@ async def confirm_rollback(payload: RollbackConfirmPayload):
         wf["agent_narrations"].append({
             "timestamp": datetime.utcnow().isoformat(),
             "agent": "Rollback Agent",
-            "message": "❌ Rollback cancelled by user"
+            "message": "Rollback cancelled by user"
         })
         _save_workflows(workflows)
         

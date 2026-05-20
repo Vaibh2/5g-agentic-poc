@@ -60,12 +60,12 @@ const deploymentStatusConfig: Record<string, { color: string }> = {
   rolled_back: { color: "#ef4444" },
 };
 
-const workflowStatusConfig: Record<string, { emoji: string; color: string }> = {
-  QUEUED: { emoji: "⏳", color: "#f59e0b" },
-  RUNNING: { emoji: "🔵", color: "#3b82f6" },
-  SUCCESS: { emoji: "✅", color: "#22c55e" },
-  FAILED: { emoji: "❌", color: "#ef4444" },
-  ROLLED_BACK: { emoji: "🔁", color: "#ef4444" },
+const workflowStatusConfig: Record<string, { label: string; color: string }> = {
+  QUEUED: { label: "QUEUED", color: "#f59e0b" },
+  RUNNING: { label: "RUNNING", color: "#3b82f6" },
+  SUCCESS: { label: "SUCCESS", color: "#22c55e" },
+  FAILED: { label: "FAILED", color: "#ef4444" },
+  ROLLED_BACK: { label: "ROLLED_BACK", color: "#ef4444" },
 };
 
 export const Dashboard: React.FC = () => {
@@ -124,10 +124,10 @@ export const Dashboard: React.FC = () => {
       >
         <span className="text-lg font-bold">
           {status === "CRITICAL"
-            ? "🚨 NETWORK STATUS: CRITICAL — Anomaly detected. AI Agent monitoring."
+            ? "NETWORK STATUS: CRITICAL - Anomaly detected. AI Agent monitoring."
             : status === "HEALTHY"
-            ? "✅ NETWORK STATUS: HEALTHY — All systems nominal."
-            : "⚠️ NETWORK STATUS: UNKNOWN"}
+            ? "NETWORK STATUS: HEALTHY - All systems nominal."
+            : "NETWORK STATUS: UNKNOWN"}
         </span>
       </div>
 
@@ -162,7 +162,7 @@ export const Dashboard: React.FC = () => {
           {workflows && workflows.length > 0 ? (
             <div className="space-y-3">
               {workflows.map((wf) => {
-                const config = workflowStatusConfig[wf.status] || { emoji: "❓", color: "#6b7280" };
+                const config = workflowStatusConfig[wf.status] || { label: "UNKNOWN", color: "#6b7280" };
                 return (
                   <div
                     key={wf.workflow_id}
@@ -170,7 +170,7 @@ export const Dashboard: React.FC = () => {
                   >
                     <div className="flex justify-between items-start">
                       <span className="font-medium">
-                        {config.emoji} {wf.workflow_id}
+                        {wf.workflow_id}
                       </span>
                       <span
                         className="font-semibold rounded-md px-2 py-1 text-xs border"

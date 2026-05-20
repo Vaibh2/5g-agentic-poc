@@ -66,7 +66,7 @@ export const Deploy: React.FC = () => {
               disabled={deploying}
               className="btn-primary w-full disabled:opacity-50"
             >
-              {deploying ? "Deploying..." : "🚀 Deploy Configuration"}
+              {deploying ? "Deploying..." : "Deploy Configuration"}
             </button>
             {result && (
               <div className="mt-4 p-3 bg-green-500/10 border border-green-500 rounded-lg">
@@ -95,12 +95,12 @@ export const Deploy: React.FC = () => {
               onClick={handleInjectAnomaly}
               className="btn-secondary w-full"
             >
-              ⚡ Inject Anomaly Spike
+              Inject Anomaly Spike
             </button>
             {anomalyInjected && (
               <div className="mt-4 p-3 bg-red-500/10 border border-red-500 rounded-lg">
                 <p className="text-red-500 font-medium">
-                  🚨 Anomaly injected! Metrics are now CRITICAL.
+                  Anomaly injected! Metrics are now CRITICAL.
                 </p>
                 {anomalyResult && (
                   <pre className="mt-2 text-xs text-gray-400 overflow-x-auto">
@@ -130,7 +130,7 @@ export const Deploy: React.FC = () => {
           </pre>
           <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500 rounded-lg">
             <p className="text-yellow-500 text-sm">
-              ⚠️ MTU change to 9000 requires jumbo frame support on ALL edge
+              MTU change to 9000 requires jumbo frame support on ALL edge
               nodes.
             </p>
           </div>

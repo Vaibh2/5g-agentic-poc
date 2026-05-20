@@ -22,23 +22,14 @@ from dotenv import load_dotenv
 env_path = Path(__file__).parent.parent / ".env"
 load_dotenv(env_path)
 
-from services.zai_client import chat_complete as zai_chat_complete, get_zai_client
+from services.zai_client import chat_complete as openai_chat_complete, get_openai_client
 
-print("🚀 Loading CrewAI Agents...", file=sys.stderr)
+print("[INIT] Loading CrewAI Agents...", file=sys.stderr)
 
-# Force unset OPENAI_API_KEY to prevent CrewAI from using it
-if "OPENAI_API_KEY" in os.environ:
-    del os.environ["OPENAI_API_KEY"]
-    print("🔧 Removed OPENAI_API_KEY from environment", file=sys.stderr)
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+MODEL = "gpt-5.4-mini-2026-03-17"
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-ZAI_API_KEY = os.getenv("ZAI_API_KEY", "")
-MODEL = "gemini-3-flash-preview"
-ZAI_MODEL = "glm-4-0520"
-
-print(f"🔍 GEMINI_API_KEY: {GEMINI_API_KEY[:10]}..." if GEMINI_API_KEY else "🔍 GEMINI_API_KEY: NOT SET", file=sys.stderr)
-print(f"🔍 ZAI_API_KEY: {'SET' if ZAI_API_KEY else 'NOT SET'}", file=sys.stderr)
-print(f"🔍 OPENAI_API_KEY: {'SET' if os.getenv('OPENAI_API_KEY') else 'NOT SET'}", file=sys.stderr)
+print(f"[INIT] OPENAI_API_KEY: {'SET' if OPENAI_API_KEY else 'NOT SET'}", file=sys.stderr)
 
 WORKFLOWS_FILE = Path(__file__).parent.parent / "data" / "workflows.json"
 
@@ -49,7 +40,7 @@ def clear_llm_cache():
     """Clear the cached LLM instance"""
     global _llm_instance
     _llm_instance = None
-    print("🗑️ [LLM] Cache cleared", file=sys.stderr)
+    print("[LLM] Cache cleared", file=sys.stderr)
 
 
 def _get_llm_cached():
@@ -58,26 +49,26 @@ def _get_llm_cached():
 
     _llm_instance = None
 
-    if not GEMINI_API_KEY:
-        print("❌ [LLM] No GEMINI_API_KEY found", file=sys.stderr)
+    if not OPENAI_API_KEY:
+        print("[LLM] No OPENAI_API_KEY found", file=sys.stderr)
         return None
 
     try:
-        from langchain_google_genai import ChatGoogleGenerativeAI
+        from langchain_openai import ChatOpenAI
 
-        print(f"🔧 [LLM] Creating fresh Gemini with model: {MODEL}", file=sys.stderr)
+        print(f"[LLM] Creating fresh OpenAI with model: {MODEL}", file=sys.stderr)
 
-        _llm_instance = ChatGoogleGenerativeAI(
+        _llm_instance = ChatOpenAI(
             model=MODEL,
-            google_api_key=GEMINI_API_KEY,
+            api_key=OPENAI_API_KEY,
             temperature=0.3,
-            max_output_tokens=1024
+            max_tokens=1024
         )
 
-        print(f"✅ [LLM] Created fresh instance", file=sys.stderr)
+        print(f"[LLM] Created fresh instance", file=sys.stderr)
         return _llm_instance
     except Exception as e:
-        print(f"❌ Failed to initialize Gemini: {e}", file=sys.stderr)
+        print(f"[LLM] Failed to initialize OpenAI: {e}", file=sys.stderr)
         import traceback
         traceback.print_exc(file=sys.stderr)
         return None
@@ -102,29 +93,29 @@ def _update_workflow_narration(workflow_id: str, agent_name: str, message: str):
 
 
 def _get_llm():
-    """Get LLM instance - uses Gemini or returns None for mock mode"""
-    print(f"🔍 Checking GEMINI_API_KEY...", file=sys.stderr)
-    print(f"   Loaded key: {GEMINI_API_KEY[:10]}...{GEMINI_API_KEY[-5:]}" if GEMINI_API_KEY else "   No key found", file=sys.stderr)
+    """Get LLM instance - uses OpenAI or returns None for mock mode"""
+    print(f"[LLM] Checking OPENAI_API_KEY...", file=sys.stderr)
+    print(f"   Loaded key: {OPENAI_API_KEY[:10]}...{OPENAI_API_KEY[-5:]}" if OPENAI_API_KEY else "   No key found", file=sys.stderr)
     
-    if not GEMINI_API_KEY:
-        print("⚠️ No GEMINI_API_KEY found - using mock mode", file=sys.stderr)
+    if not OPENAI_API_KEY:
+        print("[LLM] No OPENAI_API_KEY found - using mock mode", file=sys.stderr)
         return None
     
     try:
-        from langchain_google_genai import ChatGoogleGenerativeAI
-        print(f"📡 Initializing Gemini model: {MODEL}", file=sys.stderr)
+        from langchain_openai import ChatOpenAI
+        print(f"[LLM] Initializing OpenAI model: {MODEL}", file=sys.stderr)
         
-        llm = ChatGoogleGenerativeAI(
+        llm = ChatOpenAI(
             model=MODEL,
-            google_api_key=GEMINI_API_KEY,
+            api_key=OPENAI_API_KEY,
             temperature=0.7,
-            max_output_tokens=2048
+            max_tokens=2048
         )
         
-        print(f"✅ Gemini LLM created (will test on first use)", file=sys.stderr)
+        print(f"[LLM] OpenAI LLM created (will test on first use)", file=sys.stderr)
         return llm
     except Exception as e:
-        print(f"❌ Failed to initialize Gemini: {e}", file=sys.stderr)
+        print(f"[LLM] Failed to initialize OpenAI: {e}", file=sys.stderr)
         import traceback
         traceback.print_exc(file=sys.stderr)
         return None
@@ -141,16 +132,16 @@ def _parse_json_response(text: str) -> dict:
             text = text.split("```")[1].split("```")[0]
         return json.loads(text.strip())
     except Exception as e:
-        print(f"⚠️ JSON parse error: {e}", file=sys.stderr)
+        print(f"[PARSE] JSON parse error: {e}", file=sys.stderr)
         return {"error": "Failed to parse response", "raw": text[:200]}
 
 
-async def _zai_chat(prompt: str, model: str = "glm-4-0520") -> str:
-    """Call ZAI chat completion API"""
+async def _openai_chat(prompt: str, model: str = "gpt-5.4-mini-2026-03-17") -> str:
+    """Call OpenAI chat completion API"""
     try:
-        client = get_zai_client()
+        client = get_openai_client()
         if not client:
-            raise Exception("ZAI not configured")
+            raise Exception("OpenAI not configured")
 
         response = client.chat.completions.create(
             model=model,
@@ -159,7 +150,7 @@ async def _zai_chat(prompt: str, model: str = "glm-4-0520") -> str:
         )
         return response.choices[0].message.content
     except Exception as e:
-        print(f"❌ ZAI chat failed: {e}", file=sys.stderr)
+        print(f"[OPENAI] Chat failed: {e}", file=sys.stderr)
         raise
 
 
@@ -171,8 +162,8 @@ class CrewAgents:
         Deploy Agent - Primary validator for YAML configs
         Runs first in the sequence
         """
-        print(f"\n🤖 [DEPLOY AGENT] Starting validation for workflow {workflow_id}", file=sys.stderr)
-        _update_workflow_narration(workflow_id, "Deploy Agent", "🔍 Starting YAML configuration validation...")
+        print(f"\n[DEPLOY AGENT] Starting validation for workflow {workflow_id}", file=sys.stderr)
+        _update_workflow_narration(workflow_id, "Deploy Agent", "Starting YAML configuration validation and syntax analysis...")
         
         # Use cached LLM - no new API calls for LLM creation
         llm = _get_llm_cached()
@@ -203,20 +194,20 @@ Respond with ONLY valid JSON (no markdown, no explanation):
 }}"""
 
         try:
-            result_text = await _zai_chat(prompt)
+            result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
-            print(f"✅ [DEPLOY AGENT] ZAI result: {parsed}", file=sys.stderr)
-            _update_workflow_narration(workflow_id, "Deploy Agent", f"✅ Validation passed: {parsed.get('summary', 'Ready')}")
+            print(f"[DEPLOY AGENT] OpenAI result: {parsed}", file=sys.stderr)
+            _update_workflow_narration(workflow_id, "Deploy Agent", f"AI validation complete: {parsed.get('summary', 'Ready')}")
             return parsed
-        except Exception as zai_err:
-            print(f"⚠️ [DEPLOY AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+        except Exception as openai_err:
+            print(f"[DEPLOY AGENT] OpenAI failed: {openai_err}", file=sys.stderr)
 
         llm = _get_llm_cached()
 
         if llm:
             try:
                 from crewai import Agent, Task, Crew
-                print(f"🧠 [DEPLOY AGENT] Creating CrewAI agent with Gemini LLM...", file=sys.stderr)
+                print(f"[DEPLOY AGENT] Creating CrewAI agent with OpenAI LLM...", file=sys.stderr)
                 
                 deploy_agent = Agent(
                     role="5G Network Deployment Validator",
@@ -226,9 +217,9 @@ Respond with ONLY valid JSON (no markdown, no explanation):
                     verbose=False,
                     allow_delegation=False
                 )
-                print(f"✅ [DEPLOY AGENT] Agent created with LLM", file=sys.stderr)
+                print(f"[DEPLOY AGENT] Agent created with LLM", file=sys.stderr)
                 
-                _update_workflow_narration(workflow_id, "Deploy Agent", "🧠 Deploy Agent analyzing configurations...")
+                _update_workflow_narration(workflow_id, "Deploy Agent", "Deploy Agent analyzing configurations using multi-agent framework...")
                 
                 # Create task
                 task = Task(
@@ -237,7 +228,7 @@ Respond with ONLY valid JSON (no markdown, no explanation):
                     expected_output="JSON with success, issues, warnings, and summary"
                 )
                 
-                print(f"🚀 [DEPLOY AGENT] Starting Crew kickoff...", file=sys.stderr)
+                print(f"[DEPLOY AGENT] Starting Crew kickoff...", file=sys.stderr)
                 
                 # Create crew and run
                 try:
@@ -247,25 +238,25 @@ Respond with ONLY valid JSON (no markdown, no explanation):
                         verbose=False
                     )
                     
-                    print(f"🚀 [DEPLOY AGENT] Calling Gemini (1 of 3)", file=sys.stderr)
+                    print(f"[DEPLOY AGENT] Calling OpenAI (1 of 3)", file=sys.stderr)
                     result = crew.kickoff()
                 except Exception as crew_err:
-                    print(f"❌ [DEPLOY AGENT] Crew kickoff failed: {crew_err}", file=sys.stderr)
+                    print(f"[DEPLOY AGENT] Crew kickoff failed: {crew_err}", file=sys.stderr)
                     # Try fallback - return mock result
                     raise Exception(f"CrewAI execution failed: {crew_err}")
                 
                 parsed = _parse_json_response(str(result))
-                print(f"✅ [DEPLOY AGENT] Parsed result: {parsed}", file=sys.stderr)
+                print(f"[DEPLOY AGENT] Parsed result: {parsed}", file=sys.stderr)
                 
                 return parsed
                 
             except Exception as e:
-                print(f"⚠️ [DEPLOY AGENT] LLM failed: {e}", file=sys.stderr)
-                print(f"🔄 [DEPLOY AGENT] Falling back to mock mode...", file=sys.stderr)
+                print(f"[DEPLOY AGENT] LLM failed: {e}", file=sys.stderr)
+                print(f"[DEPLOY AGENT] Falling back to mock mode...", file=sys.stderr)
                 llm = None
         
         if not llm:
-            print(f"🎭 [DEPLOY AGENT] Running in MOCK mode", file=sys.stderr)
+            print(f"[DEPLOY AGENT] Running in MOCK mode", file=sys.stderr)
             await asyncio.sleep(1)
             issues = []
             warnings = []
@@ -297,12 +288,12 @@ Respond with ONLY valid JSON (no markdown, no explanation):
                 "summary": f"Configuration validated. {len(warnings)} warnings (non-blocking)."
             }
             
-            print(f"📋 [DEPLOY AGENT] Mock result: {result}", file=sys.stderr)
+            print(f"[DEPLOY AGENT] Mock result: {result}", file=sys.stderr)
         
         if result.get("success"):
-            _update_workflow_narration(workflow_id, "Deploy Agent", f"✅ Validation passed: {result.get('summary', 'Ready for deployment')}")
+            _update_workflow_narration(workflow_id, "Deploy Agent", f"Validation passed: {result.get('summary', 'Ready for deployment')}")
         else:
-            _update_workflow_narration(workflow_id, "Deploy Agent", f"❌ Validation failed: {', '.join(result.get('issues', []))}")
+            _update_workflow_narration(workflow_id, "Deploy Agent", f"Validation failed: {', '.join(result.get('issues', []))}")
         
         return result
     
@@ -312,8 +303,8 @@ Respond with ONLY valid JSON (no markdown, no explanation):
         Network Agent - Validates network settings
         Runs after Deploy Agent passes
         """
-        print(f"\n🤖 [NETWORK AGENT] Starting network validation for workflow {workflow_id}", file=sys.stderr)
-        _update_workflow_narration(workflow_id, "Network Agent", "🌐 Starting network infrastructure validation...")
+        print(f"\n[NETWORK AGENT] Starting network validation for workflow {workflow_id}", file=sys.stderr)
+        _update_workflow_narration(workflow_id, "Network Agent", "Starting network infrastructure validation and routing analysis...")
         
         # Use cached LLM
         llm = _get_llm_cached()
@@ -345,12 +336,12 @@ Respond with ONLY valid JSON:
 }}"""
 
         try:
-            result_text = await _zai_chat(prompt)
+            result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
-            print(f"✅ [NETWORK AGENT] ZAI result: {parsed}", file=sys.stderr)
+            print(f"[NETWORK AGENT] OpenAI result: {parsed}", file=sys.stderr)
             return parsed
-        except Exception as zai_err:
-            print(f"⚠️ [NETWORK AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+        except Exception as openai_err:
+            print(f"[NETWORK AGENT] OpenAI failed: {openai_err}", file=sys.stderr)
 
         llm = _get_llm_cached()
 
@@ -358,7 +349,7 @@ Respond with ONLY valid JSON:
             try:
                 from crewai import Agent, Task, Crew
                 
-                print(f"🧠 [NETWORK AGENT] Creating CrewAI agent...", file=sys.stderr)
+                print(f"[NETWORK AGENT] Creating CrewAI agent...", file=sys.stderr)
                 
                 network_agent = Agent(
                     role="5G Network Infrastructure Analyst",
@@ -368,7 +359,7 @@ Respond with ONLY valid JSON:
                     verbose=False
                 )
                 
-                _update_workflow_narration(workflow_id, "Network Agent", "🧠 Network Agent analyzing network configurations...")
+                _update_workflow_narration(workflow_id, "Network Agent", "Network Agent analyzing routing protocols, BGP peering, and QoS configurations...")
                 
                 task = Task(
                     description=prompt,
@@ -382,22 +373,22 @@ Respond with ONLY valid JSON:
                     verbose=False
                 )
                 
-                print(f"🚀 [NETWORK AGENT] Starting Crew kickoff...", file=sys.stderr)
+                print(f"[NETWORK AGENT] Starting Crew kickoff...", file=sys.stderr)
                 result = crew.kickoff()
-                print(f"📝 [NETWORK AGENT] Raw result: {result}", file=sys.stderr)
+                print(f"[NETWORK AGENT] Raw result: {result}", file=sys.stderr)
                 
                 parsed = _parse_json_response(str(result))
-                print(f"✅ [NETWORK AGENT] Parsed result: {parsed}", file=sys.stderr)
+                print(f"[NETWORK AGENT] Parsed result: {parsed}", file=sys.stderr)
                 
                 return parsed
                 
             except Exception as e:
-                print(f"⚠️ [NETWORK AGENT] LLM failed: {e}", file=sys.stderr)
-                print(f"🔄 [NETWORK AGENT] Falling back to mock mode...", file=sys.stderr)
+                print(f"[NETWORK AGENT] LLM failed: {e}", file=sys.stderr)
+                print(f"[NETWORK AGENT] Falling back to mock mode...", file=sys.stderr)
                 llm = None
         
         if not llm:
-            print(f"🎭 [NETWORK AGENT] Running in MOCK mode", file=sys.stderr)
+            print(f"[NETWORK AGENT] Running in MOCK mode", file=sys.stderr)
             await asyncio.sleep(1)
             network_issues = []
             network_warnings = []
@@ -423,13 +414,13 @@ Respond with ONLY valid JSON:
                 "details": f"Network validation complete. {len(network_warnings)} warnings."
             }
             
-            print(f"📋 [NETWORK AGENT] Mock result: {result}", file=sys.stderr)
+            print(f"[NETWORK AGENT] Mock result: {result}", file=sys.stderr)
         
         rec = result.get("recommendation", "REVIEW")
         if rec == "PROCEED":
-            _update_workflow_narration(workflow_id, "Network Agent", f"✅ Network validation passed: {result.get('details', '')}")
+            _update_workflow_narration(workflow_id, "Network Agent", f"Network validation passed: {result.get('details', '')}")
         else:
-            _update_workflow_narration(workflow_id, "Network Agent", f"⚠️ Network review needed: {result.get('details', '')}")
+            _update_workflow_narration(workflow_id, "Network Agent", f"Network review needed: {result.get('details', '')}")
         
         return result
     
@@ -439,8 +430,8 @@ Respond with ONLY valid JSON:
         Security Agent - Validates security configurations
         Runs after Deploy Agent passes
         """
-        print(f"\n🤖 [SECURITY AGENT] Starting security validation for workflow {workflow_id}", file=sys.stderr)
-        _update_workflow_narration(workflow_id, "Security Agent", "🔐 Starting security compliance validation...")
+        print(f"\n[SECURITY AGENT] Starting security validation for workflow {workflow_id}", file=sys.stderr)
+        _update_workflow_narration(workflow_id, "Security Agent", "Starting security compliance validation and threat assessment...")
         
         # Use cached LLM
         llm = _get_llm_cached()
@@ -472,12 +463,12 @@ Respond with ONLY valid JSON:
 }}"""
 
         try:
-            result_text = await _zai_chat(prompt)
+            result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
-            print(f"✅ [SECURITY AGENT] ZAI result: {parsed}", file=sys.stderr)
+            print(f"[SECURITY AGENT] OpenAI result: {parsed}", file=sys.stderr)
             return parsed
-        except Exception as zai_err:
-            print(f"⚠️ [SECURITY AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+        except Exception as openai_err:
+            print(f"[SECURITY AGENT] OpenAI failed: {openai_err}", file=sys.stderr)
 
         llm = _get_llm_cached()
 
@@ -485,7 +476,7 @@ Respond with ONLY valid JSON:
             try:
                 from crewai import Agent, Task, Crew
                 
-                print(f"🧠 [SECURITY AGENT] Creating CrewAI agent...", file=sys.stderr)
+                print(f"[SECURITY AGENT] Creating CrewAI agent...", file=sys.stderr)
                 
                 security_agent = Agent(
                     role="5G Security Compliance Auditor",
@@ -495,7 +486,7 @@ Respond with ONLY valid JSON:
                     verbose=False
                 )
                 
-                _update_workflow_narration(workflow_id, "Security Agent", "🧠 Security Agent analyzing security configurations...")
+                _update_workflow_narration(workflow_id, "Security Agent", "Security Agent scanning for exposed credentials, encryption weaknesses, and access control violations...")
                 
                 task = Task(
                     description=prompt,
@@ -509,22 +500,22 @@ Respond with ONLY valid JSON:
                     verbose=False
                 )
                 
-                print(f"🚀 [SECURITY AGENT] Starting Crew kickoff...", file=sys.stderr)
+                print(f"[SECURITY AGENT] Starting Crew kickoff...", file=sys.stderr)
                 result = crew.kickoff()
-                print(f"📝 [SECURITY AGENT] Raw result: {result}", file=sys.stderr)
+                print(f"[SECURITY AGENT] Raw result: {result}", file=sys.stderr)
                 
                 parsed = _parse_json_response(str(result))
-                print(f"✅ [SECURITY AGENT] Parsed result: {parsed}", file=sys.stderr)
+                print(f"[SECURITY AGENT] Parsed result: {parsed}", file=sys.stderr)
                 
                 return parsed
                 
             except Exception as e:
-                print(f"⚠️ [SECURITY AGENT] LLM failed: {e}", file=sys.stderr)
-                print(f"🔄 [SECURITY AGENT] Falling back to mock mode...", file=sys.stderr)
+                print(f"[SECURITY AGENT] LLM failed: {e}", file=sys.stderr)
+                print(f"[SECURITY AGENT] Falling back to mock mode...", file=sys.stderr)
                 llm = None
         
         if not llm:
-            print(f"🎭 [SECURITY AGENT] Running in MOCK mode", file=sys.stderr)
+            print(f"[SECURITY AGENT] Running in MOCK mode", file=sys.stderr)
             await asyncio.sleep(1)
             result = {
                 "security_issues": [],
@@ -532,12 +523,12 @@ Respond with ONLY valid JSON:
                 "compliance": True,
                 "details": "Security validation complete. No issues found."
             }
-            print(f"📋 [SECURITY AGENT] Mock result: {result}", file=sys.stderr)
+            print(f"[SECURITY AGENT] Mock result: {result}", file=sys.stderr)
         
         if result.get("compliance"):
-            _update_workflow_narration(workflow_id, "Security Agent", f"✅ Security compliance passed: {result.get('details', '')}")
+            _update_workflow_narration(workflow_id, "Security Agent", f"Security compliance passed: {result.get('details', '')}")
         else:
-            _update_workflow_narration(workflow_id, "Security Agent", f"❌ Security issues found: {result.get('details', '')}")
+            _update_workflow_narration(workflow_id, "Security Agent", f"Security issues found: {result.get('details', '')}")
         
         return result
     
@@ -547,8 +538,8 @@ Respond with ONLY valid JSON:
         Rollback Agent - Analyzes failure and recommends/executes rollback
         Triggered when Deploy Agent fails or deployment fails
         """
-        print(f"\n🤖 [ROLLBACK AGENT] Starting rollback analysis for workflow {workflow_id}", file=sys.stderr)
-        _update_workflow_narration(workflow_id, "Rollback Agent", "🔄 Analyzing failure for rollback decision...")
+        print(f"\n[ROLLBACK AGENT] Starting rollback analysis for workflow {workflow_id}", file=sys.stderr)
+        _update_workflow_narration(workflow_id, "Rollback Agent", "Analyzing deployment failure and evaluating rollback requirements...")
         
         # Use cached LLM
         llm = _get_llm_cached()
@@ -582,12 +573,12 @@ Respond with ONLY valid JSON:
 }}"""
 
         try:
-            result_text = await _zai_chat(prompt)
+            result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
-            print(f"✅ [ROLLBACK AGENT] ZAI result: {parsed}", file=sys.stderr)
+            print(f"[ROLLBACK AGENT] OpenAI result: {parsed}", file=sys.stderr)
             return parsed
-        except Exception as zai_err:
-            print(f"⚠️ [ROLLBACK AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+        except Exception as openai_err:
+            print(f"[ROLLBACK AGENT] OpenAI failed: {openai_err}", file=sys.stderr)
 
         llm = _get_llm_cached()
 
@@ -595,7 +586,7 @@ Respond with ONLY valid JSON:
             try:
                 from crewai import Agent, Task, Crew
                 
-                print(f"🧠 [ROLLBACK AGENT] Creating CrewAI agent...", file=sys.stderr)
+                print(f"[ROLLBACK AGENT] Creating CrewAI agent...", file=sys.stderr)
                 
                 rollback_agent = Agent(
                     role="5G Deployment Recovery Specialist",
@@ -605,7 +596,7 @@ Respond with ONLY valid JSON:
                     verbose=False
                 )
                 
-                _update_workflow_narration(workflow_id, "Rollback Agent", "🧠 Rollback Agent analyzing failure and planning recovery...")
+                _update_workflow_narration(workflow_id, "Rollback Agent", "Rollback Agent evaluating failure impact and generating recovery plan...")
                 
                 task = Task(
                     description=prompt,
@@ -619,22 +610,22 @@ Respond with ONLY valid JSON:
                     verbose=False
                 )
                 
-                print(f"🚀 [ROLLBACK AGENT] Starting Crew kickoff...", file=sys.stderr)
+                print(f"[ROLLBACK AGENT] Starting Crew kickoff...", file=sys.stderr)
                 result = crew.kickoff()
-                print(f"📝 [ROLLBACK AGENT] Raw result: {result}", file=sys.stderr)
+                print(f"[ROLLBACK AGENT] Raw result: {result}", file=sys.stderr)
                 
                 parsed = _parse_json_response(str(result))
-                print(f"✅ [ROLLBACK AGENT] Parsed result: {parsed}", file=sys.stderr)
+                print(f"[ROLLBACK AGENT] Parsed result: {parsed}", file=sys.stderr)
                 
                 return parsed
                 
             except Exception as e:
-                print(f"⚠️ [ROLLBACK AGENT] LLM failed: {e}", file=sys.stderr)
-                print(f"🔄 [ROLLBACK AGENT] Falling back to mock mode...", file=sys.stderr)
+                print(f"[ROLLBACK AGENT] LLM failed: {e}", file=sys.stderr)
+                print(f"[ROLLBACK AGENT] Falling back to mock mode...", file=sys.stderr)
                 llm = None
         
         if not llm:
-            print(f"🎭 [ROLLBACK AGENT] Running in MOCK mode", file=sys.stderr)
+            print(f"[ROLLBACK AGENT] Running in MOCK mode", file=sys.stderr)
             await asyncio.sleep(1)
             result = {
                 "rollback_needed": True,
@@ -649,24 +640,24 @@ Respond with ONLY valid JSON:
                 "estimated_recovery_time": 45,
                 "confirmation_required": True
             }
-            print(f"📋 [ROLLBACK AGENT] Mock result: {result}", file=sys.stderr)
+            print(f"[ROLLBACK AGENT] Mock result: {result}", file=sys.stderr)
         
         _update_workflow_narration(
             workflow_id, 
             "Rollback Agent", 
-            f"📋 Rollback recommendation: {'NEEDED' if result.get('rollback_needed') else 'NOT NEEDED'}"
+            f"Rollback recommendation: {'NEEDED' if result.get('rollback_needed') else 'NOT NEEDED'}"
         )
         _update_workflow_narration(
             workflow_id,
             "Rollback Agent",
-            f"⚠️ Reason: {result.get('reason', 'N/A')}"
+            f"Failure analysis: {result.get('reason', 'N/A')}"
         )
         
         if result.get("confirmation_required"):
             _update_workflow_narration(
                 workflow_id,
                 "Rollback Agent",
-                "❓ Awaiting confirmation to proceed with rollback..."
+                "Awaiting operator confirmation to proceed with rollback..."
             )
         
         return result
@@ -675,7 +666,7 @@ Respond with ONLY valid JSON:
 class Orchestrator:
     """
     Orchestrates the multi-agent workflow
-    - Runs Deploy → Network → Security sequentially
+    - Runs Deploy -> Network -> Security sequentially
     - On failure, triggers Rollback Agent
     - Returns consolidated results
     """
@@ -687,7 +678,7 @@ class Orchestrator:
         Returns: {final_decision: str, results: {}, rollback_available: bool}
         """
         print(f"\n{'='*60}", file=sys.stderr)
-        print(f"🎯 [ORCHESTRATOR] Starting full validation for {workflow_id}", file=sys.stderr)
+        print(f"[ORCHESTRATOR] Starting full validation for {workflow_id}", file=sys.stderr)
         print(f"{'='*60}\n", file=sys.stderr)
         
         results = {
@@ -698,12 +689,12 @@ class Orchestrator:
         }
         
         # Step 1: Deploy Agent validation
-        print(f"\n▶ [ORCHESTRATOR] Step 1: Running Deploy Agent...", file=sys.stderr)
+        print(f"\n[ORCHESTRATOR] Step 1: Running Deploy Agent...", file=sys.stderr)
         deploy_result = await CrewAgents.deploy_validation(workflow_id, yaml_contents)
         results["deploy"] = deploy_result
         
         if not deploy_result.get("success"):
-            print(f"\n❌ [ORCHESTRATOR] Deploy Agent FAILED - triggering Rollback Agent", file=sys.stderr)
+            print(f"\n[ORCHESTRATOR] Deploy Agent FAILED - triggering Rollback Agent", file=sys.stderr)
             failure_reason = "; ".join(deploy_result.get("issues", ["Unknown validation failure"]))
             rollback_result = await CrewAgents.rollback_analysis(
                 workflow_id, 
@@ -720,15 +711,15 @@ class Orchestrator:
                 "confirmation_required": rollback_result.get("confirmation_required", True)
             }
         
-        print(f"\n✅ [ORCHESTRATOR] Deploy Agent PASSED - proceeding to Network Agent", file=sys.stderr)
+        print(f"\n[ORCHESTRATOR] Deploy Agent PASSED - proceeding to Network Agent", file=sys.stderr)
         
         # Step 2: Network Agent validation
-        print(f"\n▶ [ORCHESTRATOR] Step 2: Running Network Agent...", file=sys.stderr)
+        print(f"\n[ORCHESTRATOR] Step 2: Running Network Agent...", file=sys.stderr)
         network_result = await CrewAgents.network_validation(workflow_id, yaml_contents)
         results["network"] = network_result
         
         if network_result.get("recommendation") == "REJECT":
-            print(f"\n❌ [ORCHESTRATOR] Network Agent REJECTED - triggering Rollback Agent", file=sys.stderr)
+            print(f"\n[ORCHESTRATOR] Network Agent REJECTED - triggering Rollback Agent", file=sys.stderr)
             failure_reason = "; ".join(network_result.get("network_issues", ["Network validation failed"]))
             rollback_result = await CrewAgents.rollback_analysis(
                 workflow_id,
@@ -745,15 +736,15 @@ class Orchestrator:
                 "confirmation_required": rollback_result.get("confirmation_required", True)
             }
         
-        print(f"\n✅ [ORCHESTRATOR] Network Agent PASSED - proceeding to Security Agent", file=sys.stderr)
+        print(f"\n[ORCHESTRATOR] Network Agent PASSED - proceeding to Security Agent", file=sys.stderr)
         
         # Step 3: Security Agent validation
-        print(f"\n▶ [ORCHESTRATOR] Step 3: Running Security Agent...", file=sys.stderr)
+        print(f"\n[ORCHESTRATOR] Step 3: Running Security Agent...", file=sys.stderr)
         security_result = await CrewAgents.security_validation(workflow_id, yaml_contents)
         results["security"] = security_result
         
         if not security_result.get("compliance"):
-            print(f"\n❌ [ORCHESTRATOR] Security Agent FAILED - triggering Rollback Agent", file=sys.stderr)
+            print(f"\n[ORCHESTRATOR] Security Agent FAILED - triggering Rollback Agent", file=sys.stderr)
             failure_reason = "; ".join(security_result.get("security_issues", ["Security compliance failed"]))
             rollback_result = await CrewAgents.rollback_analysis(
                 workflow_id,
@@ -771,7 +762,7 @@ class Orchestrator:
             }
         
         # All validations passed
-        print(f"\n✅ [ORCHESTRATOR] All agents PASSED - deployment can proceed", file=sys.stderr)
+        print(f"\n[ORCHESTRATOR] All agents PASSED - deployment can proceed", file=sys.stderr)
         print(f"{'='*60}\n", file=sys.stderr)
         
         return {
@@ -786,16 +777,16 @@ class Orchestrator:
         """
         Execute rollback after user confirmation
         """
-        print(f"\n🔄 [ORCHESTRATOR] Executing rollback for {workflow_id}", file=sys.stderr)
-        _update_workflow_narration(workflow_id, "Rollback Agent", "🚀 Executing rollback...")
+        print(f"\n[ORCHESTRATOR] Executing rollback for {workflow_id}", file=sys.stderr)
+        _update_workflow_narration(workflow_id, "Rollback Agent", "Executing rollback procedure...")
         
         for i, step in enumerate(rollback_steps):
             print(f"  Step {i+1}: {step}", file=sys.stderr)
-            _update_workflow_narration(workflow_id, "Rollback Agent", f"  Step {i+1}: {step}")
+            _update_workflow_narration(workflow_id, "Rollback Agent", f"Step {i+1}: {step}")
             await asyncio.sleep(0.5)
         
-        _update_workflow_narration(workflow_id, "Rollback Agent", "✅ Rollback executed successfully")
-        print(f"✅ [ORCHESTRATOR] Rollback completed for {workflow_id}", file=sys.stderr)
+        _update_workflow_narration(workflow_id, "Rollback Agent", "Rollback executed successfully - services restored to previous stable state")
+        print(f"[ORCHESTRATOR] Rollback completed for {workflow_id}", file=sys.stderr)
         
         return {
             "success": True,
@@ -808,8 +799,8 @@ class Orchestrator:
         Handle deployment execution failure (not validation failure)
         Triggered when deployment runs but fails
         """
-        print(f"\n❌ [ORCHESTRATOR] Deployment execution failed - analyzing rollback", file=sys.stderr)
-        _update_workflow_narration(workflow_id, "Rollback Agent", f"❌ Deployment failed: {failure_error}")
+        print(f"\n[ORCHESTRATOR] Deployment execution failed - analyzing rollback", file=sys.stderr)
+        _update_workflow_narration(workflow_id, "Rollback Agent", f"Deployment execution failed: {failure_error}")
         
         rollback_result = await CrewAgents.rollback_analysis(
             workflow_id,
@@ -828,4 +819,4 @@ class Orchestrator:
         }
 
 
-print("✅ CrewAI Agents module loaded successfully", file=sys.stderr)
+print("[INIT] CrewAI Agents module loaded successfully", file=sys.stderr)

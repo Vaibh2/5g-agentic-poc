@@ -42,7 +42,7 @@ export const Incidents: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">📋 Historical Incidents & RCA</h1>
+        <h1 className="text-2xl font-bold">Historical Incidents & RCA</h1>
         <p className="text-gray-400 mt-1">
           View past incidents and their root cause analysis.
         </p>
@@ -65,7 +65,7 @@ export const Incidents: React.FC = () => {
                 className="w-full text-left p-4 flex items-center justify-between hover:bg-dark-700 transition-colors"
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-red-500 text-lg">🔴</span>
+                  <span className="w-2 h-2 rounded-full bg-red-500"></span>
                   <span className="font-medium">{inc.id}</span>
                   <span className="text-gray-400">— {inc.title}</span>
                 </div>
