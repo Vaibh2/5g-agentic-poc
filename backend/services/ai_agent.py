@@ -20,6 +20,7 @@ from services.monitoring_service import MonitoringService
 from services.deployment_service import DeploymentService
 from services.rag_service import RAGService
 from services.rollback_service import RollbackService
+from services.zai_client import chat_complete as zai_chat_complete, get_zai_client
 
 DECISIONS_FILE = Path(__file__).parent.parent / "data" / "decisions.json"
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
@@ -138,6 +139,18 @@ Analyze: did this deployment cause the current anomaly? Output JSON only.
 
     @staticmethod
     async def _call_llm(user_prompt: str) -> dict:
+        try:
+            zai = get_zai_client()
+            if zai:
+                messages = [
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": user_prompt},
+                ]
+                response_text = await zai_chat_complete(messages, model="glm-4-0520")
+                return json.loads(response_text)
+        except Exception as zai_err:
+            print(f"ZAI call failed: {zai_err}, trying Gemini fallback...", file=sys.stderr)
+
         if not GEMINI_API_KEY:
             return {
                 "root_cause": "MTU size increased to 9000 without jumbo frame support on edge nodes, causing packet fragmentation and reassembly overhead",

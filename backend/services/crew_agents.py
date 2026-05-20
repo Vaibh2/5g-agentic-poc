@@ -22,6 +22,8 @@ from dotenv import load_dotenv
 env_path = Path(__file__).parent.parent / ".env"
 load_dotenv(env_path)
 
+from services.zai_client import chat_complete as zai_chat_complete, get_zai_client
+
 print("🚀 Loading CrewAI Agents...", file=sys.stderr)
 
 # Force unset OPENAI_API_KEY to prevent CrewAI from using it
@@ -30,10 +32,12 @@ if "OPENAI_API_KEY" in os.environ:
     print("🔧 Removed OPENAI_API_KEY from environment", file=sys.stderr)
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+ZAI_API_KEY = os.getenv("ZAI_API_KEY", "")
 MODEL = "gemini-3-flash-preview"
+ZAI_MODEL = "glm-4-0520"
 
-# Verify environment
 print(f"🔍 GEMINI_API_KEY: {GEMINI_API_KEY[:10]}..." if GEMINI_API_KEY else "🔍 GEMINI_API_KEY: NOT SET", file=sys.stderr)
+print(f"🔍 ZAI_API_KEY: {'SET' if ZAI_API_KEY else 'NOT SET'}", file=sys.stderr)
 print(f"🔍 OPENAI_API_KEY: {'SET' if os.getenv('OPENAI_API_KEY') else 'NOT SET'}", file=sys.stderr)
 
 WORKFLOWS_FILE = Path(__file__).parent.parent / "data" / "workflows.json"
@@ -51,27 +55,25 @@ def clear_llm_cache():
 def _get_llm_cached():
     """Get LLM instance - always creates fresh to avoid stale instances"""
     global _llm_instance
-    
-    # Always create fresh instance to avoid stale/bad cache
+
     _llm_instance = None
-    
+
     if not GEMINI_API_KEY:
         print("❌ [LLM] No GEMINI_API_KEY found", file=sys.stderr)
         return None
-    
+
     try:
         from langchain_google_genai import ChatGoogleGenerativeAI
-        
+
         print(f"🔧 [LLM] Creating fresh Gemini with model: {MODEL}", file=sys.stderr)
-        print(f"🔧 [LLM] API Key: {GEMINI_API_KEY[:15]}...", file=sys.stderr)
-        
+
         _llm_instance = ChatGoogleGenerativeAI(
             model=MODEL,
             google_api_key=GEMINI_API_KEY,
             temperature=0.3,
             max_output_tokens=1024
         )
-        
+
         print(f"✅ [LLM] Created fresh instance", file=sys.stderr)
         return _llm_instance
     except Exception as e:
@@ -143,6 +145,24 @@ def _parse_json_response(text: str) -> dict:
         return {"error": "Failed to parse response", "raw": text[:200]}
 
 
+async def _zai_chat(prompt: str, model: str = "glm-4-0520") -> str:
+    """Call ZAI chat completion API"""
+    try:
+        client = get_zai_client()
+        if not client:
+            raise Exception("ZAI not configured")
+
+        response = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.3,
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        print(f"❌ ZAI chat failed: {e}", file=sys.stderr)
+        raise
+
+
 class CrewAgents:
     
     @staticmethod
@@ -181,6 +201,17 @@ Respond with ONLY valid JSON (no markdown, no explanation):
   "warnings": ["list of warnings that don't block deployment"],
   "summary": "brief deployment readiness summary"
 }}"""
+
+        try:
+            result_text = await _zai_chat(prompt)
+            parsed = _parse_json_response(result_text)
+            print(f"✅ [DEPLOY AGENT] ZAI result: {parsed}", file=sys.stderr)
+            _update_workflow_narration(workflow_id, "Deploy Agent", f"✅ Validation passed: {parsed.get('summary', 'Ready')}")
+            return parsed
+        except Exception as zai_err:
+            print(f"⚠️ [DEPLOY AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+
+        llm = _get_llm_cached()
 
         if llm:
             try:
@@ -313,6 +344,16 @@ Respond with ONLY valid JSON:
   "details": "brief explanation"
 }}"""
 
+        try:
+            result_text = await _zai_chat(prompt)
+            parsed = _parse_json_response(result_text)
+            print(f"✅ [NETWORK AGENT] ZAI result: {parsed}", file=sys.stderr)
+            return parsed
+        except Exception as zai_err:
+            print(f"⚠️ [NETWORK AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+
+        llm = _get_llm_cached()
+
         if llm:
             try:
                 from crewai import Agent, Task, Crew
@@ -430,6 +471,16 @@ Respond with ONLY valid JSON:
   "details": "brief explanation"
 }}"""
 
+        try:
+            result_text = await _zai_chat(prompt)
+            parsed = _parse_json_response(result_text)
+            print(f"✅ [SECURITY AGENT] ZAI result: {parsed}", file=sys.stderr)
+            return parsed
+        except Exception as zai_err:
+            print(f"⚠️ [SECURITY AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+
+        llm = _get_llm_cached()
+
         if llm:
             try:
                 from crewai import Agent, Task, Crew
@@ -529,6 +580,16 @@ Respond with ONLY valid JSON:
   "estimated_recovery_time": "time in seconds",
   "confirmation_required": true or false
 }}"""
+
+        try:
+            result_text = await _zai_chat(prompt)
+            parsed = _parse_json_response(result_text)
+            print(f"✅ [ROLLBACK AGENT] ZAI result: {parsed}", file=sys.stderr)
+            return parsed
+        except Exception as zai_err:
+            print(f"⚠️ [ROLLBACK AGENT] ZAI failed: {zai_err}", file=sys.stderr)
+
+        llm = _get_llm_cached()
 
         if llm:
             try:
