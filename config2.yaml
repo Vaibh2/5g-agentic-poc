@@ -8,7 +8,7 @@ sector:
 
 routing:
   mtu: 99999
-  bgp_asn: 65001
+  bgp_asn: 6500
   peering:
     - peer_asn: 65002
       peer_ip: "10.1.0.2"
