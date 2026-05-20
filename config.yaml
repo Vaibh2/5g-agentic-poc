@@ -5,7 +5,7 @@ network:
 
 sector:
   id: "SECTOR-7"
-  location: " Mumbai-Metro-North"
+  location: "Mumbai-Metro-North"
   cells:
     - cell_id: "CELL-7A"
       frequency_band: "n78"
@@ -18,9 +18,9 @@ sector:
       bandwidth_mhz: 400
 
 routing:
-  mtu_size: 9999
+  mtu_size: 1500
   bgp_asn: 65001
-  bgp_route_preference: "auto"
+  bgp_route_preference: 100
   peering:
     - peer_asn: 65002
       peer_ip: "10.7.0.2"
@@ -34,12 +34,29 @@ transport:
 
 security:
   encryption: "aes-256-gcm"
+  authentication: "mutual-tls"
   firewall_rules:
     - rule_id: "ALLOW-5G-CORE"
       source: "10.0.0.0/8"
+      destination: "10.0.0.0/8"
+      port: 5000-6000
+      protocol: "tcp"
+      action: "permit"
+    - rule_id: "ALLOW-MGMT"
+      source: "172.16.0.0/12"
+      destination: "10.0.0.0/8"
+      port: 22
+      protocol: "tcp"
+      action: "permit"
+    - rule_id: "ALLOW-BGP"
+      source: "10.7.0.0/24"
+      destination: "10.7.0.0/24"
+      port: 179
+      protocol: "tcp"
       action: "permit"
     - rule_id: "DENY-DEFAULT"
       source: "0.0.0.0/0"
+      destination: "0.0.0.0/0"
       action: "deny"
 
 monitoring:
@@ -49,6 +66,7 @@ monitoring:
     - packet_loss_pct
     - cpu_usage_pct
     - throughput_gbps
+    - error_rate_pct
   alert_thresholds:
     latency_ms: 500
     packet_loss_pct: 5
