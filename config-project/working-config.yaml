@@ -4,7 +4,7 @@ network:
   version: "r2"
 
 sector:
-  id: "SECTOR-7A"
+  id: "SECTOR-7"
   location: "Mumbai-Metro-North"
   cells:
     - cell_id: "CELL-7A"
