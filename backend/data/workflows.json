@@ -5006,6 +5006,11 @@
         "timestamp": "2026-05-20T19:38:33.723738",
         "agent": "Deploy Agent",
         "message": "Rollback awaiting operator confirmation..."
+      },
+      {
+        "timestamp": "2026-05-21T12:13:05.929817",
+        "agent": "Rollback Agent",
+        "message": "Rollback cancelled by user"
       }
     ]
   }
