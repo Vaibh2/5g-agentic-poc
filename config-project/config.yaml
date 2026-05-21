@@ -7,7 +7,7 @@ sector:
   id: "SECTOR-7"
   location: "Mumbai-Metro-North"
   cells:
-    - cell_id: "CELL-7A"
+    - cell_id: "CELL-7C"
       frequency_band: "n78"
       bandwidth_mhz: 100
     - cell_id: "CELL-7B"
