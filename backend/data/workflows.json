@@ -4600,5 +4600,413 @@
         "message": "Deployment completed successfully - all services operational"
       }
     ]
+  },
+  {
+    "workflow_id": "wf_51F6BCD1",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-20T19:32:17.451677",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-20T19:32:30.437807"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-20T19:32:30.452993"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-20T19:32:18.207517",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:19.219276",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:19.244070",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:20.269617",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:20.286427",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:20.303117",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:26.124891",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: Configuration is syntactically valid and mostly complete, but deployment is blocked by an invalid/unsafe MTU value. After correcting MTU and confirming firewall rule schema requirements, the config should be re-evaluated."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:26.139936",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:29.634432",
+        "agent": "Deploy Agent",
+        "message": "Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:30.371776",
+        "agent": "Deploy Agent",
+        "message": "Rollback Agent: Rollback is needed because the deployment contains a likely invalid transport MTU setting (routing.mtu_size = 150), which is far below standard Ethernet MTU and can break 5G transport connectivity. The firewall rule schema also appears incomplete for DENY-DEFAULT, which may cause policy validation or enforcement issues. These issues can impact service availability and traffic handling, so reverting the deployment is the safest recovery action."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:30.388387",
+        "agent": "Deploy Agent",
+        "message": "Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:30.404508",
+        "agent": "Deploy Agent",
+        "message": "Estimated Recovery Time: 300s"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:30.422643",
+        "agent": "Deploy Agent",
+        "message": "Rollback awaiting operator confirmation..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:37.213605",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:37.213605",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:37.213605",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:37.213605",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:37.213605",
+        "agent": "Rollback Agent",
+        "message": "Rollback executed successfully - services restored to previous stable state"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_9614A07A",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-20T19:32:53.526816",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-20T19:33:07.579420"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-20T19:33:07.593370"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-20T19:32:53.547414",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:54.561089",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:54.583089",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-20T19:32:55.600832",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:55.620944",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:55.641958",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:57.741034",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: YAML syntax is valid and the configuration appears deployment-ready. Core 5G fields are present, including sector, routing, BGP, transport, security, and monitoring settings. No blocking issues were found."
+      },
+      {
+        "timestamp": "2026-05-20T19:32:57.758550",
+        "agent": "Network Agent",
+        "message": "Starting network infrastructure validation and routing analysis..."
+      },
+      {
+        "timestamp": "2026-05-20T19:33:00.710354",
+        "agent": "Security Agent",
+        "message": "Starting security compliance validation and threat assessment..."
+      },
+      {
+        "timestamp": "2026-05-20T19:33:03.239448",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      },
+      {
+        "timestamp": "2026-05-20T19:33:06.819434",
+        "agent": "Deploy Agent",
+        "message": "Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-20T19:33:07.517971",
+        "agent": "Deploy Agent",
+        "message": "Rollback Agent: The deployment failed during security validation, which indicates the current configuration did not meet required security controls and should not remain in production. The most likely rollback scope is the newly deployed security-related configuration in config.yaml, especially the security section and any dependent routing/firewall changes introduced with this release."
+      },
+      {
+        "timestamp": "2026-05-20T19:33:07.533972",
+        "agent": "Deploy Agent",
+        "message": "Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-20T19:33:07.548865",
+        "agent": "Deploy Agent",
+        "message": "Estimated Recovery Time: 300s"
+      },
+      {
+        "timestamp": "2026-05-20T19:33:07.563386",
+        "agent": "Deploy Agent",
+        "message": "Rollback awaiting operator confirmation..."
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_D01C070D",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-20T19:36:07.426405",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-20T19:36:19.841950"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-20T19:36:19.857949"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-20T19:36:08.234170",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:09.252620",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:09.274969",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:10.295977",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:10.313438",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:10.329788",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:15.415199",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: Configuration is mostly valid YAML and contains the core 5G deployment sections, but it is not fully deployment-ready due to an MTU value that may require jumbo frame support and an incomplete default deny firewall rule definition."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:15.431836",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:19.087442",
+        "agent": "Deploy Agent",
+        "message": "Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:19.776445",
+        "agent": "Deploy Agent",
+        "message": "Rollback Agent: Rollback is needed because the deployment contains two policy-breaking configuration issues: routing.mtu_size is set to 1501, which exceeds standard Ethernet MTU and can cause packet fragmentation or path failures unless jumbo frames are enabled end-to-end; and the DENY-DEFAULT firewall rule is incomplete because it lacks required protocol and port fields, which may cause policy validation failure or inconsistent enforcement. These issues affect transport and security behavior in production and should be reverted to the last known-good configuration before further rollout."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:19.792951",
+        "agent": "Deploy Agent",
+        "message": "Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:19.807949",
+        "agent": "Deploy Agent",
+        "message": "Estimated Recovery Time: 300s"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:19.825950",
+        "agent": "Deploy Agent",
+        "message": "Rollback awaiting operator confirmation..."
+      },
+      {
+        "timestamp": "2026-05-20T19:36:24.636664",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:24.636664",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:24.636664",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:24.636664",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-20T19:36:24.636664",
+        "agent": "Rollback Agent",
+        "message": "Rollback executed successfully - services restored to previous stable state"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_CC11928A",
+    "status": "FAILED",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-20T19:38:09.534705",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-20T19:38:33.739252"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-20T19:38:33.754911"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-20T19:38:10.301908",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:11.310230",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:11.328766",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-20T19:38:12.353919",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:12.369940",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:12.385874",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:18.274557",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: YAML syntax appears valid, but the deployment is not fully ready due to MTU/jumbo-frame risk and missing core 5G/transport details required for a complete production deployment."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:18.292722",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:32.793945",
+        "agent": "Deploy Agent",
+        "message": "Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-20T19:38:33.676788",
+        "agent": "Deploy Agent",
+        "message": "Rollback Agent: Rollback is needed because the deployment is incomplete and potentially unsafe for production: MTU is set to 1501 without jumbo frame support or path MTU validation, required 5G core parameters and transport/interface details are missing, and BGP is enabled without explicit neighbor authentication or route policy controls. These issues can cause traffic blackholing, control-plane instability, and routing/security exposure."
+      },
+      {
+        "timestamp": "2026-05-20T19:38:33.693887",
+        "agent": "Deploy Agent",
+        "message": "Risk Level: HIGH"
+      },
+      {
+        "timestamp": "2026-05-20T19:38:33.708825",
+        "agent": "Deploy Agent",
+        "message": "Estimated Recovery Time: 900s"
+      },
+      {
+        "timestamp": "2026-05-20T19:38:33.723738",
+        "agent": "Deploy Agent",
+        "message": "Rollback awaiting operator confirmation..."
+      }
+    ]
   }
 ]
