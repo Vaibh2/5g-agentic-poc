@@ -62,5 +62,84 @@
     "timestamp": "2026-05-18T17:04:29.991048",
     "resolved": true,
     "resolved_at": "2026-05-18T17:06:16.299981"
+  },
+  {
+    "alert_id": "ALT_0005",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 903ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 903,
+      "packet_loss_pct": 39.8,
+      "cpu_usage_pct": 96,
+      "throughput_gbps": 1.9,
+      "error_rate_pct": 18.2,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-21T19:35:56.299331",
+    "resolved": true,
+    "resolved_at": "2026-05-21T19:36:53.313339"
+  },
+  {
+    "alert_id": "ALT_0006",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 890ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 890,
+      "packet_loss_pct": 30.4,
+      "cpu_usage_pct": 87,
+      "throughput_gbps": 1.6,
+      "error_rate_pct": 14.3,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-21T19:39:48.978163",
+    "resolved": true,
+    "resolved_at": "2026-05-21T19:44:37.882406"
+  },
+  {
+    "alert_id": "ALT_0007",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 921ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 921,
+      "packet_loss_pct": 28.6,
+      "cpu_usage_pct": 97,
+      "throughput_gbps": 2.4,
+      "error_rate_pct": 24.9,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-21T19:47:12.160469",
+    "resolved": true,
+    "resolved_at": "2026-05-21T19:47:45.555349"
+  },
+  {
+    "alert_id": "ALT_0008",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 1176ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 1176,
+      "packet_loss_pct": 24.9,
+      "cpu_usage_pct": 91,
+      "throughput_gbps": 3.4,
+      "error_rate_pct": 26.5,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-21T19:57:08.913560",
+    "resolved": true,
+    "resolved_at": "2026-05-21T19:57:35.178541"
+  },
+  {
+    "alert_id": "ALT_0009",
+    "severity": "CRITICAL",
+    "message": "Latency spike detected: 912ms (threshold: 500ms)",
+    "metrics_snapshot": {
+      "latency_ms": 912,
+      "packet_loss_pct": 19.3,
+      "cpu_usage_pct": 89,
+      "throughput_gbps": 2.1,
+      "error_rate_pct": 14.9,
+      "status": "CRITICAL"
+    },
+    "timestamp": "2026-05-21T19:58:20.184673",
+    "resolved": false
   }
 ]

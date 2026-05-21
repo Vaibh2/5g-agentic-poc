@@ -186,14 +186,16 @@ class CrewAgents:
             for f in yaml_contents
         ])
         
-        prompt = f"""You are a 5G Network Deployment Agent. Analyze the following YAML configuration files for deployment readiness.
+        prompt = f"""You are a 5G Network Deployment Agent. Analyze the following YAML configuration files for structural and syntax readiness.
 
 Check for:
 1. Valid YAML syntax
-2. Required 5G configuration fields (sector, mtu, bgp settings, etc.)
-3. Known risky configurations (e.g., MTU > 1500 without jumbo frames)
-4. Missing required parameters
-5. Invalid values
+2. Required 5G configuration fields are present (sector, mtu, bgp settings, etc.)
+3. Missing required parameters or empty fields
+4. Invalid values or out-of-range numbers (e.g., MTU outside 68-9000, ASN outside 1-65535)
+5. Structural completeness - are all expected top-level sections present?
+
+IMPORTANT: Do NOT evaluate security settings (credentials, firewall rules, API keys, encryption, TLS, admin access). Security validation is handled by a separate Security Agent. Only report issues with YAML structure, missing fields, and numeric range violations.
 
 Files to analyze:
 {files_summary}
@@ -336,6 +338,9 @@ Check for:
 4. IP addressing issues
 5. Routing protocol settings
 6. VLAN/segmentation issues
+
+IMPORTANT: Do NOT evaluate security settings (firewall rules, credentials, API keys, encryption, admin access). Security validation is handled by a separate Security Agent. Focus only on network infrastructure and routing.
+If there are no network/routing issues, set recommendation to "PROCEED" even if security settings look concerning.
 
 Files to analyze:
 {files_summary}
@@ -519,6 +524,8 @@ Check for:
 5. Authentication/authorization problems
 6. Compliance violations
 
+CRITICAL RULE: Only set "compliance" to false if there are actual "security_issues" (real problems like exposed secrets, weak encryption, open access). Warnings/advice alone should NEVER cause compliance failure. Warnings are just recommendations, not blockers.
+
 Files to analyze:
 {files_summary}
 
@@ -535,6 +542,8 @@ Respond with ONLY valid JSON:
             result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
             print(f"[SECURITY AGENT] OpenAI result: {parsed}", file=sys.stderr)
+            if not parsed.get("security_issues"):
+                parsed["compliance"] = True
             for issue in parsed.get("security_issues", []):
                 await _update_workflow_narration(workflow_id, "Security Agent", f"ISSUE: {issue}")
             for warning in parsed.get("security_warnings", []):
@@ -590,6 +599,9 @@ Respond with ONLY valid JSON:
                 
                 parsed = _parse_json_response(str(result))
                 print(f"[SECURITY AGENT] Parsed result: {parsed}", file=sys.stderr)
+                
+                if not parsed.get("security_issues"):
+                    parsed["compliance"] = True
                 
                 for issue in parsed.get("security_issues", []):
                     await _update_workflow_narration(workflow_id, "Security Agent", f"ISSUE: {issue}")

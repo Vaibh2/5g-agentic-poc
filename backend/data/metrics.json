@@ -1,8 +1,8 @@
 {
-  "latency_ms": 120,
-  "packet_loss_pct": 0.1,
-  "cpu_usage_pct": 28,
-  "throughput_gbps": 9.8,
-  "error_rate_pct": 0.05,
-  "status": "HEALTHY"
+  "latency_ms": 912,
+  "packet_loss_pct": 19.3,
+  "cpu_usage_pct": 89,
+  "throughput_gbps": 2.1,
+  "error_rate_pct": 14.9,
+  "status": "CRITICAL"
 }

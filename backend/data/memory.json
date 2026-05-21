@@ -128,5 +128,65 @@
     "role": "assistant",
     "content": "Your recent workflows are **still deploying**.\n\n- **dep_58281D** \u2014 routing-config-v23: deploying\n- **dep_D5C29A** \u2014 routing-config-v24: deploying\n- **dep_2A4569** \u2014 routing-config-v24: deploying\n\nOverall network status is **HEALTHY**, with stable metrics:\n- Latency: 120ms\n- Packet Loss: 0.1%\n- CPU: 28%\n- Throughput: 9.8 Gbps\n- Error Rate: 0.05%\n\nIf you want, I can also summarize whether any deployment looks risky based on the metrics.",
     "timestamp": "2026-05-21T12:29:23.017370"
+  },
+  {
+    "role": "user",
+    "content": "rollback dep_E81219",
+    "timestamp": "2026-05-21T19:36:53.314338"
+  },
+  {
+    "role": "assistant",
+    "content": "Rollback executed for DEP_E81219!\n\nPrevious stable configuration restored. Network metrics normalized.\n\nRecovery actions:\n- Reverted routing config to last stable version\n- MTU reset to 1500 across all nodes\n- BGP routes re-converged\n- Monitoring confirmed baseline restoration",
+    "timestamp": "2026-05-21T19:36:53.314338"
+  },
+  {
+    "role": "user",
+    "content": "rollback dep_E81219",
+    "timestamp": "2026-05-21T19:44:37.883680"
+  },
+  {
+    "role": "assistant",
+    "content": "Rollback executed for DEP_E81219!\n\nPrevious stable configuration restored. Network metrics normalized.\n\nRecovery actions:\n- Reverted routing config to last stable version\n- MTU reset to 1500 across all nodes\n- BGP routes re-converged\n- Monitoring confirmed baseline restoration",
+    "timestamp": "2026-05-21T19:44:37.883680"
+  },
+  {
+    "role": "user",
+    "content": "what caussed last incident",
+    "timestamp": "2026-05-21T19:45:37.832308"
+  },
+  {
+    "role": "assistant",
+    "content": "The most likely cause of the last incident was **deployment-related**, specifically **routing configuration changes**.\n\nFrom the context:\n- Recent deployments included **routing-config-v23/v24**\n- The deployment **dep_E81219** was marked as **deploying** around the time of the incident\n- The rollback restored the previous stable configuration, MTU, and BGP convergence, which suggests the issue was likely caused by a **bad routing change or route convergence problem**\n\nSo the incident was probably caused by:\n- **faulty routing config**\n- **BGP route instability / convergence delay**\n- possibly an **MTU mismatch** introduced during deployment\n\nIf you want, I can help phrase this as a formal incident summary.",
+    "timestamp": "2026-05-21T19:45:37.832308"
+  },
+  {
+    "role": "user",
+    "content": "rollback dep_E81219",
+    "timestamp": "2026-05-21T19:47:45.556372"
+  },
+  {
+    "role": "assistant",
+    "content": "Rollback executed for DEP_E81219!\n\nPrevious stable configuration restored. Network metrics normalized.\n\nRecovery actions:\n- Reverted routing config to last stable version\n- MTU reset to 1500 across all nodes\n- BGP routes re-converged\n- Monitoring confirmed baseline restoration",
+    "timestamp": "2026-05-21T19:47:45.556372"
+  },
+  {
+    "role": "user",
+    "content": "what caussed previouss anolmaly",
+    "timestamp": "2026-05-21T19:48:06.273099"
+  },
+  {
+    "role": "assistant",
+    "content": "The previous anomaly was most likely caused by a **routing configuration deployment issue**.\n\nBased on the context:\n- Recent workflows were deploying **routing-config-v23/v24**\n- The system had to be rolled back for **dep_E81219**\n- Recovery included restoring the last stable routing config, resetting MTU, and re-converging BGP routes\n\nThat points to a likely cause of:\n- **bad routing changes**\n- **BGP convergence instability**\n- possibly an **MTU mismatch** introduced during deployment\n\nCurrent metrics are now healthy, so the issue appears resolved.",
+    "timestamp": "2026-05-21T19:48:06.273099"
+  },
+  {
+    "role": "user",
+    "content": "rollback dep_916FAE",
+    "timestamp": "2026-05-21T19:57:35.179553"
+  },
+  {
+    "role": "assistant",
+    "content": "Rollback executed for DEP_916FAE!\n\nPrevious stable configuration restored. Network metrics normalized.\n\nRecovery actions:\n- Reverted routing config to last stable version\n- MTU reset to 1500 across all nodes\n- BGP routes re-converged\n- Monitoring confirmed baseline restoration",
+    "timestamp": "2026-05-21T19:57:35.179553"
   }
 ]
