@@ -5562,5 +5562,405 @@
         "message": "Deployment completed successfully - all services operational"
       }
     ]
+  },
+  {
+    "workflow_id": "wf_66F9B398",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "working-config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-21T18:16:25.747374",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-21T18:16:25.786374",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-21T18:16:31.799278",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-21T18:16:36.811499",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: working-config.yaml"
+      },
+      {
+        "timestamp": "2026-05-21T18:16:42.826429",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-21T18:16:47.835307",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-21T18:16:52.865255",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:01.652643",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: Deployment-ready configuration. YAML syntax is valid and required 5G fields are present, including sector, routing/BGP, transport, security, and monitoring settings. No blocking issues or notable risks detected."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:06.689263",
+        "agent": "Network Agent",
+        "message": "Starting network infrastructure validation and routing analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:11.707031",
+        "agent": "Network Agent",
+        "message": "Checking MTU configuration across network interfaces..."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:19.494517",
+        "agent": "Network Agent",
+        "message": "WARNING: MTU is set to 1500, so jumbo frame support is not required; no MTU risk detected."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:24.513376",
+        "agent": "Network Agent",
+        "message": "WARNING: BGP ASN values appear valid (65001 local, 65002 peer) and the peer IP/port 179 are consistent, but no explicit BGP timers, authentication, or multihop settings are defined."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:29.536079",
+        "agent": "Network Agent",
+        "message": "WARNING: QoS policy is referenced as 'enhanced', but no explicit bandwidth allocation, class maps, or priority queue definitions are provided."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:34.548145",
+        "agent": "Network Agent",
+        "message": "WARNING: IP addressing is generally consistent, but the firewall rule for monitoring uses destination 10.0.0.0/24, which is a subnet rather than a host address; verify this is intentional."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:39.558365",
+        "agent": "Network Agent",
+        "message": "WARNING: Routing configuration is minimal; no OSPF/IS-IS/static route details are present, so routing behavior beyond BGP is not fully defined."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:44.570639",
+        "agent": "Network Agent",
+        "message": "WARNING: No VLAN IDs, VRFs, or explicit segmentation constructs are defined; verify L2/L3 segmentation is handled elsewhere."
+      },
+      {
+        "timestamp": "2026-05-21T18:17:50.980916",
+        "agent": "Network Agent",
+        "message": "Jira ticket created: PROJ-19"
+      },
+      {
+        "timestamp": "2026-05-21T18:17:56.012045",
+        "agent": "Security Agent",
+        "message": "Starting security compliance validation and threat assessment..."
+      },
+      {
+        "timestamp": "2026-05-21T18:18:01.063518",
+        "agent": "Security Agent",
+        "message": "Scanning for exposed credentials and sensitive data..."
+      },
+      {
+        "timestamp": "2026-05-21T18:18:08.783564",
+        "agent": "Security Agent",
+        "message": "WARNING: Firewall rule ALLOW-MONITORING permits access from 10.0.0.100/32 to the entire 10.0.0.0/24 destination range on TCP/9090, which may be broader than necessary and could expose monitoring services."
+      },
+      {
+        "timestamp": "2026-05-21T18:18:13.820385",
+        "agent": "Security Agent",
+        "message": "WARNING: The default deny rule is present, but rule ordering and implicit policy enforcement are not specified; verify that deny-all is evaluated last and that no other inherited rules exist."
+      },
+      {
+        "timestamp": "2026-05-21T18:18:18.874302",
+        "agent": "Security Agent",
+        "message": "WARNING: No explicit authentication/authorization scopes or role-based access controls are defined beyond mutual-tls, so administrative access controls may be incomplete from a compliance perspective."
+      },
+      {
+        "timestamp": "2026-05-21T18:18:23.895053",
+        "agent": "Security Agent",
+        "message": "WARNING: No explicit certificate validation, key rotation, or cipher-suite restrictions are specified for mutual-TLS and AES-256-GCM, so cryptographic compliance cannot be fully verified from this configuration alone."
+      },
+      {
+        "timestamp": "2026-05-21T18:18:30.272905",
+        "agent": "Security Agent",
+        "message": "Jira ticket created: PROJ-20"
+      },
+      {
+        "timestamp": "2026-05-21T18:18:35.306040",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      },
+      {
+        "timestamp": "2026-05-21T18:18:43.680280",
+        "agent": "Rollback Agent",
+        "message": "Jira ticket created: PROJ-21"
+      },
+      {
+        "timestamp": "2026-05-21T18:18:49.703344",
+        "agent": "Deploy Agent",
+        "message": "Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-21T18:18:55.980790",
+        "agent": "Deploy Agent",
+        "message": "Jira ticket created: PROJ-22"
+      },
+      {
+        "timestamp": "2026-05-21T18:19:01.648895",
+        "agent": "Deploy Agent",
+        "message": "Rollback Agent: Rollback is needed because the deployment failed security validation, which indicates the applied configuration does not meet required security controls and should not remain active. The most likely rollback scope is the security section, especially firewall rules and any security policy changes introduced in this deployment, to restore the last known compliant configuration."
+      },
+      {
+        "timestamp": "2026-05-21T18:19:06.667170",
+        "agent": "Deploy Agent",
+        "message": "Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-21T18:19:11.690001",
+        "agent": "Deploy Agent",
+        "message": "Estimated Recovery Time: 300s"
+      },
+      {
+        "timestamp": "2026-05-21T18:19:20.111745",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-21T18:19:20.111745",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-21T18:19:20.111745",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-21T18:19:20.111745",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-21T18:19:20.111745",
+        "agent": "Rollback Agent",
+        "message": "Rollback executed successfully - services restored to previous stable state"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_8598CDDA",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "working-config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-21T18:24:40.582087",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-21T18:26:39.536447"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-21T18:26:39.552440"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-21T18:24:40.648878",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-21T18:24:42.694117",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-21T18:24:43.725659",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: working-config.yaml"
+      },
+      {
+        "timestamp": "2026-05-21T18:24:45.742188",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-21T18:24:46.784958",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-21T18:24:47.806868",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T18:24:53.169045",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: YAML syntax is valid and required 5G deployment fields are present, including sector, routing/MTU, BGP settings, transport, security, and monitoring. Configuration appears deployment-ready with minor review items."
+      },
+      {
+        "timestamp": "2026-05-21T18:24:54.163990",
+        "agent": "Network Agent",
+        "message": "Starting network infrastructure validation and routing analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T18:24:57.185466",
+        "agent": "Network Agent",
+        "message": "Checking MTU configuration across network interfaces..."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:03.514213",
+        "agent": "Network Agent",
+        "message": "WARNING: MTU is set to 1500, so jumbo frame support is not required; no MTU mismatch is indicated in this config."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:06.541447",
+        "agent": "Network Agent",
+        "message": "WARNING: BGP ASN values appear valid and distinct (65001 local, 65002 peer), but only one neighbor is defined; verify bidirectional peering, remote-as consistency, and session source/interface configuration."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:09.547521",
+        "agent": "Network Agent",
+        "message": "WARNING: QoS policy is referenced as 'enhanced' but no explicit bandwidth guarantees, class maps, or priority queue definitions are present."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:12.584004",
+        "agent": "Network Agent",
+        "message": "WARNING: IP addressing is mostly consistent, but firewall rules reference 10.0.0.0/24 and specific /32 endpoints without explicit interface/VLAN bindings; confirm these subnets are actually assigned on the intended interfaces."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:15.612989",
+        "agent": "Network Agent",
+        "message": "WARNING: Routing protocol settings are limited to BGP-related fields; no OSPF/IS-IS/static route details are provided, so routing completeness cannot be fully validated."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:18.637487",
+        "agent": "Network Agent",
+        "message": "WARNING: No VLAN or segmentation configuration is present; verify that control-plane, user-plane, and monitoring traffic are properly segmented in the underlying network design."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:23.351995",
+        "agent": "Network Agent",
+        "message": "Jira ticket created: PROJ-23"
+      },
+      {
+        "timestamp": "2026-05-21T18:25:26.388094",
+        "agent": "Security Agent",
+        "message": "Starting security compliance validation and threat assessment..."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:31.396177",
+        "agent": "Security Agent",
+        "message": "Scanning for exposed credentials and sensitive data..."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:38.876321",
+        "agent": "Security Agent",
+        "message": "WARNING: ALLOW-MONITORING permits TCP/9090 from 10.0.0.100/32 to the entire 10.0.0.0/24 destination range, which is broader than least-privilege and may expose monitoring services unnecessarily."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:43.892850",
+        "agent": "Security Agent",
+        "message": "WARNING: DENY-DEFAULT is present, but firewall rule ordering/precedence is not specified; if evaluated incorrectly, the broad monitoring permit could override intended restrictions."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:48.918154",
+        "agent": "Security Agent",
+        "message": "WARNING: No explicit authentication/authorization scopes or role-based access controls are defined beyond mutual-tls, so administrative/API access control may be incomplete from a compliance perspective."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:53.925197",
+        "agent": "Security Agent",
+        "message": "WARNING: No explicit key management, certificate rotation, or secret handling controls are defined, which may be a compliance gap even though no plaintext secrets are present."
+      },
+      {
+        "timestamp": "2026-05-21T18:25:58.946784",
+        "agent": "Security Agent",
+        "message": "WARNING: Monitoring is enabled and exposes operational metrics; ensure access is restricted and logged to avoid information disclosure."
+      },
+      {
+        "timestamp": "2026-05-21T18:26:05.068174",
+        "agent": "Security Agent",
+        "message": "Jira ticket created: PROJ-24"
+      },
+      {
+        "timestamp": "2026-05-21T18:26:10.094457",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      },
+      {
+        "timestamp": "2026-05-21T18:26:21.405106",
+        "agent": "Rollback Agent",
+        "message": "Jira ticket created: PROJ-25"
+      },
+      {
+        "timestamp": "2026-05-21T18:26:29.433071",
+        "agent": "Deploy Agent",
+        "message": "Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-21T18:26:31.661731",
+        "agent": "Deploy Agent",
+        "message": "Jira ticket created: PROJ-26"
+      },
+      {
+        "timestamp": "2026-05-21T18:26:33.343580",
+        "agent": "Deploy Agent",
+        "message": "Rollback Agent: Rollback is needed because the deployment failed security validation, indicating the applied configuration does not satisfy required security controls and should not remain in production. The most likely revert scope is the security section and any dependent network access changes introduced by this deployment, especially the new firewall allow rules, mutual-TLS/encryption settings, and any routing/peering exposure that was enabled as part of the rollout."
+      },
+      {
+        "timestamp": "2026-05-21T18:26:34.378088",
+        "agent": "Deploy Agent",
+        "message": "Risk Level: MEDIUM"
+      },
+      {
+        "timestamp": "2026-05-21T18:26:35.398206",
+        "agent": "Deploy Agent",
+        "message": "Estimated Recovery Time: 300s"
+      },
+      {
+        "timestamp": "2026-05-21T18:26:37.485153",
+        "agent": "Deploy Agent",
+        "message": "Jira ticket created: PROJ-27"
+      },
+      {
+        "timestamp": "2026-05-21T18:26:38.515092",
+        "agent": "Deploy Agent",
+        "message": "Rollback awaiting operator confirmation..."
+      },
+      {
+        "timestamp": "2026-05-21T18:28:22.627007",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-21T18:28:22.627007",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-21T18:28:22.627007",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-21T18:28:22.627007",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-21T18:28:22.627007",
+        "agent": "Rollback Agent",
+        "message": "Rollback executed successfully - services restored to previous stable state"
+      }
+    ]
   }
 ]

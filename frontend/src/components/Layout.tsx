@@ -47,7 +47,7 @@ export const Layout: React.FC<LayoutProps> = ({
       {/* Sidebar */}
       <aside className="w-64 bg-dark-900 border-r border-dark-700 p-4 flex flex-col">
         <div className="mb-6">
-          <h1 className="text-xl font-bold text-white">5G Agentic AI Ops</h1>
+          <h1 className="text-xl font-bold text-white">Agentic AI Ops</h1>
           <p className="text-sm text-gray-400 mt-1">Autonomous Self-Healing Infrastructure</p>
         </div>
 

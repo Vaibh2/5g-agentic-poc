@@ -33,7 +33,7 @@ def _save_workflows(workflows):
     WORKFLOWS_FILE.write_text(json.dumps(workflows, indent=2))
 
 
-def _update_workflow(workflow_id: str, status: str = None, narration: str = None, step: str = None):
+async def _update_workflow(workflow_id: str, status: str = None, narration: str = None, step: str = None):
     workflows = _load_workflows()
     for wf in workflows:
         if wf["workflow_id"] == workflow_id:
@@ -52,16 +52,18 @@ def _update_workflow(workflow_id: str, status: str = None, narration: str = None
                 })
             break
     _save_workflows(workflows)
+    if narration:
+        await asyncio.sleep(1)
 
 
 class DeployAgent:
     
     @staticmethod
     async def run(workflow_id: str, files: List[str], repo_path: str):
-        _update_workflow(workflow_id, narration="Deploy Agent initialized - awaiting task assignment...")
+        await _update_workflow(workflow_id, narration="Deploy Agent initialized - awaiting task assignment...")
         
         await asyncio.sleep(1)
-        _update_workflow(workflow_id, status="RUNNING", narration="Fetching changed files from repository...")
+        await _update_workflow(workflow_id, status="RUNNING", narration="Fetching changed files from repository...")
         
         yaml_contents = []
         for file_path in files:
@@ -76,9 +78,9 @@ class DeployAgent:
             
             if content is None:
                 content = f"# Mock config from {file_path}\nmtu: 1500\nnetwork: 5g\nsector: test-sector\n"
-                _update_workflow(workflow_id, narration=f"Using default configuration for: {file_path}")
+                await _update_workflow(workflow_id, narration=f"Using default configuration for: {file_path}")
             else:
-                _update_workflow(workflow_id, narration=f"Configuration file loaded: {file_path}")
+                await _update_workflow(workflow_id, narration=f"Configuration file loaded: {file_path}")
             
             yaml_contents.append({
                 "file": file_path,
@@ -86,11 +88,11 @@ class DeployAgent:
             })
         
         if not yaml_contents:
-            _update_workflow(workflow_id, status="FAILED", narration="No valid YAML files found to deploy")
+            await _update_workflow(workflow_id, status="FAILED", narration="No valid YAML files found to deploy")
             return
         
         await asyncio.sleep(1)
-        _update_workflow(workflow_id, narration="Analyzing YAML configuration structure and parameters...")
+        await _update_workflow(workflow_id, narration="Analyzing YAML configuration structure and parameters...")
         
         # Run CrewAI agent to analyze
         analysis_result = await DeployAgent._run_crewai_analysis(yaml_contents, workflow_id)
@@ -98,14 +100,14 @@ class DeployAgent:
         await asyncio.sleep(1)
         
         if analysis_result.get("success"):
-            _update_workflow(workflow_id, narration="Validation passed - proceeding with deployment...")
+            await _update_workflow(workflow_id, narration="Validation passed - proceeding with deployment...")
             await asyncio.sleep(1)
-            _update_workflow(workflow_id, narration="Initiating deployment to 5G infrastructure...")
+            await _update_workflow(workflow_id, narration="Initiating deployment to 5G infrastructure...")
             await asyncio.sleep(2)
-            _update_workflow(workflow_id, narration="Waiting for infrastructure provisioning to complete...")
+            await _update_workflow(workflow_id, narration="Waiting for infrastructure provisioning to complete...")
             await asyncio.sleep(1)
-            _update_workflow(workflow_id, narration="Deployment completed successfully - all services operational")
-            _update_workflow(workflow_id, status="SUCCESS")
+            await _update_workflow(workflow_id, narration="Deployment completed successfully - all services operational")
+            await _update_workflow(workflow_id, status="SUCCESS")
 
             send_workflow_alert(
                 workflow_id=workflow_id,
@@ -117,12 +119,12 @@ class DeployAgent:
             rollback_info = agent_results.get("rollback", {})
             
             error_msg = analysis_result.get('error', 'Unknown error')
-            _update_workflow(workflow_id, narration=f"Deployment failed: {error_msg}")
-            _update_workflow(workflow_id, status="FAILED")
+            await _update_workflow(workflow_id, narration=f"Deployment failed: {error_msg}")
+            await _update_workflow(workflow_id, status="FAILED")
 
             ticket_key = create_deployment_failure_ticket(workflow_id, workflow_id, error_msg)
             if ticket_key:
-                _update_workflow(workflow_id, narration=f"Jira ticket created: {ticket_key}")
+                await _update_workflow(workflow_id, narration=f"Jira ticket created: {ticket_key}")
 
             rollback_reason = None
             if rollback_info:
@@ -138,9 +140,9 @@ class DeployAgent:
             
             # Show rollback agent's recommendation
             if rollback_info:
-                _update_workflow(workflow_id, narration=f"Rollback Agent: {rollback_info.get('reason', 'Analyzing failure...')}")
-                _update_workflow(workflow_id, narration=f"Risk Level: {rollback_info.get('risk_level', 'MEDIUM')}")
-                _update_workflow(workflow_id, narration=f"Estimated Recovery Time: {rollback_info.get('estimated_recovery_time', 30)}s")
+                await _update_workflow(workflow_id, narration=f"Rollback Agent: {rollback_info.get('reason', 'Analyzing failure...')}")
+                await _update_workflow(workflow_id, narration=f"Risk Level: {rollback_info.get('risk_level', 'MEDIUM')}")
+                await _update_workflow(workflow_id, narration=f"Estimated Recovery Time: {rollback_info.get('estimated_recovery_time', 30)}s")
                 
                 ticket_key = create_rollback_ticket(
                     workflow_id, workflow_id,
@@ -148,13 +150,13 @@ class DeployAgent:
                     rollback_info.get("risk_level", "MEDIUM")
                 )
                 if ticket_key:
-                    _update_workflow(workflow_id, narration=f"Jira ticket created: {ticket_key}")
+                    await _update_workflow(workflow_id, narration=f"Jira ticket created: {ticket_key}")
                 
                 if rollback_info.get("confirmation_required"):
-                    _update_workflow(workflow_id, narration="Rollback awaiting operator confirmation...")
-                    _update_workflow(workflow_id, step="ROLLBACK_PENDING")
+                    await _update_workflow(workflow_id, narration="Rollback awaiting operator confirmation...")
+                    await _update_workflow(workflow_id, step="ROLLBACK_PENDING")
             
-            _update_workflow(workflow_id, step="ROLLBACK_NEEDED")
+            await _update_workflow(workflow_id, step="ROLLBACK_NEEDED")
 
     @staticmethod
     async def _run_crewai_analysis(yaml_contents: List[dict], workflow_id: str) -> dict:
@@ -167,10 +169,10 @@ class DeployAgent:
             if not CREWAI_AVAILABLE:
                 # Fallback to simple analysis
                 print("[ANALYSIS] Using mock analysis (CREWAI not available)", file=sys.stderr)
-                _update_workflow(workflow_id, narration="Running configuration validation (mock mode)...")
+                await _update_workflow(workflow_id, narration="Running configuration validation (mock mode)...")
                 return await DeployAgent._simple_analysis(yaml_contents)
             
-            _update_workflow(workflow_id, narration="Starting multi-agent validation pipeline...")
+            await _update_workflow(workflow_id, narration="Starting multi-agent validation pipeline...")
             
             print("[ANALYSIS] Calling Orchestrator.run_full_validation()...", file=sys.stderr)
             

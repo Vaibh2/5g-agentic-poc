@@ -11,7 +11,7 @@ from datetime import datetime
 API_BASE = "http://localhost:8000"
 
 st.set_page_config(
-    page_title="5G Agentic AI Ops",
+    page_title="Agentic AI Ops",
     page_icon="📡",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -82,7 +82,7 @@ def metric_color(key, val):
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 
 with st.sidebar:
-    st.markdown("## 📡 5G Agentic AI Ops")
+    st.markdown("## 📡 Agentic AI Ops")
     st.markdown("*Autonomous Self-Healing Infrastructure*")
     st.divider()
 
