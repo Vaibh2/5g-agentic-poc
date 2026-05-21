@@ -4,10 +4,10 @@ network:
   version: "r2"
 
 sector:
-  id: "SECTOR-7A"
+  id: "SECTOR-7"
   location: "Mumbai-Metro-North"
   cells:
-    - cell_id: "CELL-12"
+    - cell_id: "CELL-7"
       frequency_band: "n78"
       bandwidth_mhz: 100
     - cell_id: "CELL-7B"
