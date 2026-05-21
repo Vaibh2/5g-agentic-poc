@@ -23,6 +23,11 @@ env_path = Path(__file__).parent.parent / ".env"
 load_dotenv(env_path)
 
 from services.zai_client import chat_complete as openai_chat_complete, get_openai_client
+from services.jira_service import (
+    create_network_issue_ticket,
+    create_security_issue_ticket,
+    create_rollback_ticket,
+)
 
 print("[INIT] Loading CrewAI Agents...", file=sys.stderr)
 
@@ -62,7 +67,7 @@ def _get_llm_cached():
             model=MODEL,
             api_key=OPENAI_API_KEY,
             temperature=0.3,
-            max_tokens=1024
+            max_completion_tokens=1024
         )
 
         print(f"[LLM] Created fresh instance", file=sys.stderr)
@@ -109,7 +114,7 @@ def _get_llm():
             model=MODEL,
             api_key=OPENAI_API_KEY,
             temperature=0.7,
-            max_tokens=2048
+            max_completion_tokens=2048
         )
         
         print(f"[LLM] OpenAI LLM created (will test on first use)", file=sys.stderr)
@@ -336,9 +341,25 @@ Respond with ONLY valid JSON:
 }}"""
 
         try:
+            _update_workflow_narration(workflow_id, "Network Agent", "Checking MTU configuration across network interfaces...")
             result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
             print(f"[NETWORK AGENT] OpenAI result: {parsed}", file=sys.stderr)
+            for issue in parsed.get("network_issues", []):
+                _update_workflow_narration(workflow_id, "Network Agent", f"ISSUE: {issue}")
+            for warning in parsed.get("network_warnings", []):
+                _update_workflow_narration(workflow_id, "Network Agent", f"WARNING: {warning}")
+            
+            if parsed.get("network_issues") or parsed.get("network_warnings"):
+                ticket_key = create_network_issue_ticket(
+                    workflow_id,
+                    parsed.get("network_issues", []),
+                    parsed.get("network_warnings", []),
+                    parsed.get("recommendation", "REVIEW")
+                )
+                if ticket_key:
+                    _update_workflow_narration(workflow_id, "Network Agent", f"Jira ticket created: {ticket_key}")
+            
             return parsed
         except Exception as openai_err:
             print(f"[NETWORK AGENT] OpenAI failed: {openai_err}", file=sys.stderr)
@@ -380,6 +401,21 @@ Respond with ONLY valid JSON:
                 parsed = _parse_json_response(str(result))
                 print(f"[NETWORK AGENT] Parsed result: {parsed}", file=sys.stderr)
                 
+                for issue in parsed.get("network_issues", []):
+                    _update_workflow_narration(workflow_id, "Network Agent", f"ISSUE: {issue}")
+                for warning in parsed.get("network_warnings", []):
+                    _update_workflow_narration(workflow_id, "Network Agent", f"WARNING: {warning}")
+                
+                if parsed.get("network_issues") or parsed.get("network_warnings"):
+                    ticket_key = create_network_issue_ticket(
+                        workflow_id,
+                        parsed.get("network_issues", []),
+                        parsed.get("network_warnings", []),
+                        parsed.get("recommendation", "REVIEW")
+                    )
+                    if ticket_key:
+                        _update_workflow_narration(workflow_id, "Network Agent", f"Jira ticket created: {ticket_key}")
+                
                 return parsed
                 
             except Exception as e:
@@ -403,9 +439,33 @@ Respond with ONLY valid JSON:
                     elif mtu == 9000:
                         network_warnings.append(f"File {filename}: MTU 9000 needs jumbo frames on all nodes")
             
+            _update_workflow_narration(workflow_id, "Network Agent", "Checking MTU configuration across network interfaces...")
             for f in yaml_contents:
                 content = f['content'].lower()
                 validate_network_mtu(content, f['file'])
+            
+            _update_workflow_narration(workflow_id, "Network Agent", "Verifying BGP peering and AS number assignments...")
+            
+            _update_workflow_narration(workflow_id, "Network Agent", "Analyzing QoS settings and bandwidth allocations...")
+            
+            _update_workflow_narration(workflow_id, "Network Agent", "Validating IP addressing and subnet configurations...")
+            
+            _update_workflow_narration(workflow_id, "Network Agent", "Inspecting routing protocol settings and VLAN segmentation...")
+            
+            for issue in network_issues:
+                _update_workflow_narration(workflow_id, "Network Agent", f"ISSUE: {issue}")
+            for warning in network_warnings:
+                _update_workflow_narration(workflow_id, "Network Agent", f"WARNING: {warning}")
+            
+            if network_issues or network_warnings:
+                ticket_key = create_network_issue_ticket(
+                    workflow_id,
+                    network_issues,
+                    network_warnings,
+                    "PROCEED" if not network_issues else "REVIEW"
+                )
+                if ticket_key:
+                    _update_workflow_narration(workflow_id, "Network Agent", f"Jira ticket created: {ticket_key}")
             
             result = {
                 "network_issues": network_issues,
@@ -463,9 +523,25 @@ Respond with ONLY valid JSON:
 }}"""
 
         try:
+            _update_workflow_narration(workflow_id, "Security Agent", "Scanning for exposed credentials and sensitive data...")
             result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
             print(f"[SECURITY AGENT] OpenAI result: {parsed}", file=sys.stderr)
+            for issue in parsed.get("security_issues", []):
+                _update_workflow_narration(workflow_id, "Security Agent", f"ISSUE: {issue}")
+            for warning in parsed.get("security_warnings", []):
+                _update_workflow_narration(workflow_id, "Security Agent", f"WARNING: {warning}")
+            
+            if parsed.get("security_issues") or parsed.get("security_warnings"):
+                ticket_key = create_security_issue_ticket(
+                    workflow_id,
+                    parsed.get("security_issues", []),
+                    parsed.get("security_warnings", []),
+                    parsed.get("compliance", True)
+                )
+                if ticket_key:
+                    _update_workflow_narration(workflow_id, "Security Agent", f"Jira ticket created: {ticket_key}")
+            
             return parsed
         except Exception as openai_err:
             print(f"[SECURITY AGENT] OpenAI failed: {openai_err}", file=sys.stderr)
@@ -507,6 +583,21 @@ Respond with ONLY valid JSON:
                 parsed = _parse_json_response(str(result))
                 print(f"[SECURITY AGENT] Parsed result: {parsed}", file=sys.stderr)
                 
+                for issue in parsed.get("security_issues", []):
+                    _update_workflow_narration(workflow_id, "Security Agent", f"ISSUE: {issue}")
+                for warning in parsed.get("security_warnings", []):
+                    _update_workflow_narration(workflow_id, "Security Agent", f"WARNING: {warning}")
+                
+                if parsed.get("security_issues") or parsed.get("security_warnings"):
+                    ticket_key = create_security_issue_ticket(
+                        workflow_id,
+                        parsed.get("security_issues", []),
+                        parsed.get("security_warnings", []),
+                        parsed.get("compliance", True)
+                    )
+                    if ticket_key:
+                        _update_workflow_narration(workflow_id, "Security Agent", f"Jira ticket created: {ticket_key}")
+                
                 return parsed
                 
             except Exception as e:
@@ -517,13 +608,37 @@ Respond with ONLY valid JSON:
         if not llm:
             print(f"[SECURITY AGENT] Running in MOCK mode", file=sys.stderr)
             await asyncio.sleep(1)
+            security_issues = []
+            security_warnings = []
+            
+            _update_workflow_narration(workflow_id, "Security Agent", "Scanning for exposed credentials and sensitive data...")
+            _update_workflow_narration(workflow_id, "Security Agent", "Verifying encryption standards for control plane traffic...")
+            _update_workflow_narration(workflow_id, "Security Agent", "Checking firewall rules for overly permissive entries...")
+            _update_workflow_narration(workflow_id, "Security Agent", "Auditing authentication and authorization mechanisms...")
+            _update_workflow_narration(workflow_id, "Security Agent", "Assessing compliance with 3GPP security standards...")
+            
+            if security_issues or security_warnings:
+                ticket_key = create_security_issue_ticket(
+                    workflow_id,
+                    security_issues,
+                    security_warnings,
+                    True
+                )
+                if ticket_key:
+                    _update_workflow_narration(workflow_id, "Security Agent", f"Jira ticket created: {ticket_key}")
+            
             result = {
-                "security_issues": [],
-                "security_warnings": [],
+                "security_issues": security_issues,
+                "security_warnings": security_warnings,
                 "compliance": True,
                 "details": "Security validation complete. No issues found."
             }
             print(f"[SECURITY AGENT] Mock result: {result}", file=sys.stderr)
+        
+        for issue in result.get("security_issues", []):
+            _update_workflow_narration(workflow_id, "Security Agent", f"ISSUE: {issue}")
+        for warning in result.get("security_warnings", []):
+            _update_workflow_narration(workflow_id, "Security Agent", f"WARNING: {warning}")
         
         if result.get("compliance"):
             _update_workflow_narration(workflow_id, "Security Agent", f"Security compliance passed: {result.get('details', '')}")
@@ -576,6 +691,15 @@ Respond with ONLY valid JSON:
             result_text = await _openai_chat(prompt)
             parsed = _parse_json_response(result_text)
             print(f"[ROLLBACK AGENT] OpenAI result: {parsed}", file=sys.stderr)
+            
+            ticket_key = create_rollback_ticket(
+                workflow_id, deployment_id,
+                parsed.get("reason", failure_reason),
+                parsed.get("risk_level", "MEDIUM")
+            )
+            if ticket_key:
+                _update_workflow_narration(workflow_id, "Rollback Agent", f"Jira ticket created: {ticket_key}")
+            
             return parsed
         except Exception as openai_err:
             print(f"[ROLLBACK AGENT] OpenAI failed: {openai_err}", file=sys.stderr)
@@ -617,6 +741,14 @@ Respond with ONLY valid JSON:
                 parsed = _parse_json_response(str(result))
                 print(f"[ROLLBACK AGENT] Parsed result: {parsed}", file=sys.stderr)
                 
+                ticket_key = create_rollback_ticket(
+                    workflow_id, deployment_id,
+                    parsed.get("reason", failure_reason),
+                    parsed.get("risk_level", "MEDIUM")
+                )
+                if ticket_key:
+                    _update_workflow_narration(workflow_id, "Rollback Agent", f"Jira ticket created: {ticket_key}")
+                
                 return parsed
                 
             except Exception as e:
@@ -641,6 +773,14 @@ Respond with ONLY valid JSON:
                 "confirmation_required": True
             }
             print(f"[ROLLBACK AGENT] Mock result: {result}", file=sys.stderr)
+        
+        ticket_key = create_rollback_ticket(
+            workflow_id, deployment_id,
+            result.get("reason", failure_reason),
+            result.get("risk_level", "MEDIUM")
+        )
+        if ticket_key:
+            _update_workflow_narration(workflow_id, "Rollback Agent", f"Jira ticket created: {ticket_key}")
         
         _update_workflow_narration(
             workflow_id, 

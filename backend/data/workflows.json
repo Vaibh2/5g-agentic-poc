@@ -5013,5 +5013,554 @@
         "message": "Rollback cancelled by user"
       }
     ]
+  },
+  {
+    "workflow_id": "wf_A0165671",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "working-config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-21T12:13:52.838663",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-21T12:13:53.577033",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-21T12:13:54.596926",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-21T12:13:54.620196",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: working-config.yaml"
+      },
+      {
+        "timestamp": "2026-05-21T12:13:55.632636",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-21T12:13:55.648683",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-21T12:13:55.664872",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T12:13:59.459626",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: YAML syntax is valid and required 5G deployment fields are present. Configuration appears deployment-ready with no blocking issues detected."
+      },
+      {
+        "timestamp": "2026-05-21T12:13:59.485079",
+        "agent": "Network Agent",
+        "message": "Starting network infrastructure validation and routing analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T12:14:03.658026",
+        "agent": "Security Agent",
+        "message": "Starting security compliance validation and threat assessment..."
+      },
+      {
+        "timestamp": "2026-05-21T12:14:07.086639",
+        "agent": "Deploy Agent",
+        "message": "Validation passed - proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-21T12:14:08.107727",
+        "agent": "Deploy Agent",
+        "message": "Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-21T12:14:10.134449",
+        "agent": "Deploy Agent",
+        "message": "Waiting for infrastructure provisioning to complete..."
+      },
+      {
+        "timestamp": "2026-05-21T12:14:11.127779",
+        "agent": "Deploy Agent",
+        "message": "Deployment completed successfully - all services operational"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_38DA1A7D",
+    "status": "ROLLED_BACK",
+    "trigger": "git-push",
+    "files_changed": [
+      "config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-21T13:26:06.218132",
+    "steps": [
+      {
+        "step": "ROLLBACK_PENDING",
+        "timestamp": "2026-05-21T13:26:22.310844"
+      },
+      {
+        "step": "ROLLBACK_NEEDED",
+        "timestamp": "2026-05-21T13:26:22.325816"
+      }
+    ],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-21T13:26:06.281762",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:07.323657",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:07.345723",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config.yaml"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:08.361477",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:08.377114",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:08.399078",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:16.603952",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: The YAML is syntactically valid and contains many core 5G deployment fields, but it is not fully deployment-ready due to the MTU being above standard Ethernet without explicit jumbo frame support and incomplete BGP/transport validation details."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:16.608961",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:21.566196",
+        "agent": "Deploy Agent",
+        "message": "Deployment failed: Agent validation failed - rollback recommended"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:22.249365",
+        "agent": "Deploy Agent",
+        "message": "Rollback Agent: Rollback is needed because the deployment contains multiple validation blockers that can impact transport stability and production security: MTU is set to 1501 without confirmed jumbo-frame support end-to-end, BGP configuration is incomplete for safe routing validation, the monitoring firewall rule is overly broad for production, and sector-to-cell constraints are not explicitly validated. These issues indicate the deployment is not safe to keep in production."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:22.266233",
+        "agent": "Deploy Agent",
+        "message": "Risk Level: HIGH"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:22.281140",
+        "agent": "Deploy Agent",
+        "message": "Estimated Recovery Time: 900s"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:22.295859",
+        "agent": "Deploy Agent",
+        "message": "Rollback awaiting operator confirmation..."
+      },
+      {
+        "timestamp": "2026-05-21T13:26:24.107640",
+        "agent": "Rollback Agent",
+        "message": "  Step 1: Reverting YAML configuration changes"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:24.107640",
+        "agent": "Rollback Agent",
+        "message": "  Step 2: Restarting affected network services"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:24.107640",
+        "agent": "Rollback Agent",
+        "message": "  Step 3: Verifying network connectivity"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:24.107640",
+        "agent": "Rollback Agent",
+        "message": "  Step 4: Confirming metrics return to normal"
+      },
+      {
+        "timestamp": "2026-05-21T13:26:24.107640",
+        "agent": "Rollback Agent",
+        "message": "Rollback executed successfully - services restored to previous stable state"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_73821BAE",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "working-config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-21T13:28:12.690764",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-21T13:28:12.714044",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:13.736458",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:13.759625",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: working-config.yaml"
+      },
+      {
+        "timestamp": "2026-05-21T13:28:14.776161",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:14.791881",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:14.800097",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:16.216650",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: Configuration is valid YAML and appears deployment-ready. Required 5G fields are present, values are within expected ranges, and no risky MTU or routing settings were detected."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:16.246535",
+        "agent": "Network Agent",
+        "message": "Starting network infrastructure validation and routing analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:19.188588",
+        "agent": "Security Agent",
+        "message": "Starting security compliance validation and threat assessment..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:22.822187",
+        "agent": "Deploy Agent",
+        "message": "Validation passed - proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:23.840752",
+        "agent": "Deploy Agent",
+        "message": "Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:25.861300",
+        "agent": "Deploy Agent",
+        "message": "Waiting for infrastructure provisioning to complete..."
+      },
+      {
+        "timestamp": "2026-05-21T13:28:26.885973",
+        "agent": "Deploy Agent",
+        "message": "Deployment completed successfully - all services operational"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_FA86902B",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "working-config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-21T14:21:21.896199",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-21T14:21:21.914922",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:22.935413",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:22.959847",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: working-config.yaml"
+      },
+      {
+        "timestamp": "2026-05-21T14:21:23.976759",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:23.993023",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:24.009135",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:27.993108",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: YAML syntax is valid and the configuration includes the required 5G deployment fields such as sector, routing, MTU, BGP, transport, security, and monitoring. No blocking issues or risky values were detected."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:28.008585",
+        "agent": "Network Agent",
+        "message": "Starting network infrastructure validation and routing analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:28.018654",
+        "agent": "Network Agent",
+        "message": "Checking MTU configuration across network interfaces..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.484333",
+        "agent": "Network Agent",
+        "message": "WARNING: MTU is set to 1500; no jumbo frame requirement is present, so this is acceptable but may limit high-throughput transport efficiency."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.514053",
+        "agent": "Network Agent",
+        "message": "WARNING: BGP configuration is incomplete for full validation: only local ASN, one peer ASN, and peer IP are defined; no explicit local/peer interface, authentication, timers, or next-hop settings are provided."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.529062",
+        "agent": "Network Agent",
+        "message": "WARNING: QoS policy is referenced as 'enhanced' but no bandwidth allocation, class maps, or priority queue definitions are present."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.543062",
+        "agent": "Network Agent",
+        "message": "WARNING: IP addressing is mostly consistent, but the BGP peer IP 10.7.0.2 and local firewall destination 10.7.0.1 should be confirmed as being in the same routed subnet and correctly assigned to the peering interface."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.547143",
+        "agent": "Network Agent",
+        "message": "WARNING: Routing protocol settings are limited to BGP preference and peering; no OSPF/IS-IS/static route details are defined, so route redistribution and failover behavior cannot be fully assessed."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.569307",
+        "agent": "Network Agent",
+        "message": "WARNING: VLAN or segmentation configuration is not defined, so network isolation between core, transport, and management planes cannot be verified."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.588434",
+        "agent": "Security Agent",
+        "message": "Starting security compliance validation and threat assessment..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:31.607091",
+        "agent": "Security Agent",
+        "message": "Scanning for exposed credentials and sensitive data..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:34.755244",
+        "agent": "Security Agent",
+        "message": "WARNING: Monitoring rule allows access from 10.0.0.100/32 to the entire 10.0.0.0/24 destination range on TCP/9090; this is broader than least-privilege and may expose multiple internal services if 9090 is reused."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:34.787815",
+        "agent": "Security Agent",
+        "message": "WARNING: Firewall rules do not explicitly specify logging, rate limiting, or stateful inspection controls, which may reduce auditability and resilience against abuse."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:34.809259",
+        "agent": "Security Agent",
+        "message": "WARNING: BGP peering is permitted on TCP/179 between fixed peers, but no authentication (e.g., MD5/TCP-AO) or TTL security is indicated for the routing session."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:34.825395",
+        "agent": "Security Agent",
+        "message": "WARNING: Compliance posture is generally strong, but the configuration does not show key management, certificate lifecycle, or access-control governance details required for full audit assurance."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:35.813008",
+        "agent": "Deploy Agent",
+        "message": "Validation passed - proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:36.831052",
+        "agent": "Deploy Agent",
+        "message": "Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:38.832336",
+        "agent": "Deploy Agent",
+        "message": "Waiting for infrastructure provisioning to complete..."
+      },
+      {
+        "timestamp": "2026-05-21T14:21:39.869705",
+        "agent": "Deploy Agent",
+        "message": "Deployment completed successfully - all services operational"
+      }
+    ]
+  },
+  {
+    "workflow_id": "wf_D41D18C7",
+    "status": "SUCCESS",
+    "trigger": "git-push",
+    "files_changed": [
+      "working-config.yaml"
+    ],
+    "repo_path": "C:/Users/Gaurav/Desktop/5g-agentic-poc/config-project",
+    "created_at": "2026-05-21T14:41:51.696733",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-21T14:41:51.728330",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-21T14:41:52.763807",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-21T14:41:52.793430",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: working-config.yaml"
+      },
+      {
+        "timestamp": "2026-05-21T14:41:53.828479",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-21T14:41:53.852495",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-21T14:41:53.882222",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T14:41:57.486067",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: YAML syntax is valid and the configuration includes the required 5G deployment fields (sector, routing/BGP, transport, security, and monitoring). No blocking issues or risky values were detected; MTU is 1500, which is safe without jumbo frame requirements."
+      },
+      {
+        "timestamp": "2026-05-21T14:41:57.489324",
+        "agent": "Network Agent",
+        "message": "Starting network infrastructure validation and routing analysis..."
+      },
+      {
+        "timestamp": "2026-05-21T14:41:57.517090",
+        "agent": "Network Agent",
+        "message": "Checking MTU configuration across network interfaces..."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:00.624894",
+        "agent": "Network Agent",
+        "message": "WARNING: MTU is set to 1500; no jumbo frame requirement is present, so this is acceptable but may limit high-throughput transport efficiency."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:00.640952",
+        "agent": "Network Agent",
+        "message": "WARNING: BGP ASN 65001 with peer ASN 65002 is valid, but only one neighbor is defined and no explicit BGP timers, authentication, or address-family settings are provided."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:00.656578",
+        "agent": "Network Agent",
+        "message": "WARNING: QoS policy is referenced as 'enhanced', but no concrete bandwidth guarantees, priority queue mappings, or shaping/policing parameters are defined."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:00.667110",
+        "agent": "Network Agent",
+        "message": "WARNING: IP addressing appears internally consistent for the listed control-plane and BGP endpoints, but there is no explicit subnet/interface mapping for all network elements."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:00.682769",
+        "agent": "Network Agent",
+        "message": "WARNING: Routing configuration is minimal; no IGP/static route details, redistribution policy, or route filtering beyond prefix_limit are specified."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:00.698393",
+        "agent": "Network Agent",
+        "message": "WARNING: VLAN/segmentation configuration is absent, so tenant/plane isolation cannot be validated from this YAML."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:02.178703",
+        "agent": "Network Agent",
+        "message": "Jira ticket created: PROJ-6"
+      },
+      {
+        "timestamp": "2026-05-21T14:42:02.187258",
+        "agent": "Security Agent",
+        "message": "Starting security compliance validation and threat assessment..."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:02.210832",
+        "agent": "Security Agent",
+        "message": "Scanning for exposed credentials and sensitive data..."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:04.735367",
+        "agent": "Security Agent",
+        "message": "WARNING: Monitoring rule allows access from 10.0.0.100/32 to the entire 10.0.0.0/24 subnet on port 9090; verify this is strictly required and limited to the minimum necessary scope."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:04.748953",
+        "agent": "Security Agent",
+        "message": "WARNING: Firewall rules do not explicitly specify stateful inspection or logging requirements; consider adding logging/auditing for permit and deny actions to support compliance and incident response."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:04.765729",
+        "agent": "Security Agent",
+        "message": "WARNING: No explicit authorization/role-based access controls are defined for monitoring or network management functions; ensure administrative access is restricted to authorized identities only."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:05.919143",
+        "agent": "Security Agent",
+        "message": "Jira ticket created: PROJ-7"
+      },
+      {
+        "timestamp": "2026-05-21T14:42:06.951819",
+        "agent": "Deploy Agent",
+        "message": "Validation passed - proceeding with deployment..."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:07.953137",
+        "agent": "Deploy Agent",
+        "message": "Initiating deployment to 5G infrastructure..."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:09.975765",
+        "agent": "Deploy Agent",
+        "message": "Waiting for infrastructure provisioning to complete..."
+      },
+      {
+        "timestamp": "2026-05-21T14:42:10.984288",
+        "agent": "Deploy Agent",
+        "message": "Deployment completed successfully - all services operational"
+      }
+    ]
   }
 ]

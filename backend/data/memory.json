@@ -88,5 +88,45 @@
     "role": "assistant",
     "content": "Current network status: **HEALTHY**\n\n- Latency: 120ms\n- Packet Loss: 0.1%\n- CPU: 28%\n- Throughput: 9.8 Gbps\n- Error Rate: 0.05%",
     "timestamp": "2026-05-18T17:07:18.630505"
+  },
+  {
+    "role": "user",
+    "content": "he",
+    "timestamp": "2026-05-21T12:19:26.826434"
+  },
+  {
+    "role": "assistant",
+    "content": "Error calling OpenAI: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}. Using fallback response.\n\nCurrent status: HEALTHY. Latency: 120ms, CPU: 28%. How can I help further?",
+    "timestamp": "2026-05-21T12:19:26.826434"
+  },
+  {
+    "role": "user",
+    "content": "hey",
+    "timestamp": "2026-05-21T12:27:26.440801"
+  },
+  {
+    "role": "assistant",
+    "content": "Error calling OpenAI: Error code: 400 - {'error': {'message': \"Unsupported parameter: 'max_tokens' is not supported with this model. Use 'max_completion_tokens' instead.\", 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': 'unsupported_parameter'}}. Using fallback response.\n\nCurrent status: HEALTHY. Latency: 120ms, CPU: 28%. How can I help further?",
+    "timestamp": "2026-05-21T12:27:26.440801"
+  },
+  {
+    "role": "user",
+    "content": "hey",
+    "timestamp": "2026-05-21T12:28:59.440212"
+  },
+  {
+    "role": "assistant",
+    "content": "Hey! Current network status is **HEALTHY**.\n\n- Latency: 120ms\n- Packet Loss: 0.1%\n- CPU: 28%\n- Throughput: 9.8 Gbps\n- Error Rate: 0.05%\n\nRecent deployments are still **deploying**:\n- dep_58281D: routing-config-v23\n- dep_D5C29A: routing-config-v24\n- dep_2A4569: routing-config-v24\n\nIf you want, I can also help check a specific deployment or metric.",
+    "timestamp": "2026-05-21T12:28:59.440212"
+  },
+  {
+    "role": "user",
+    "content": "how are my recent workflows running",
+    "timestamp": "2026-05-21T12:29:23.017370"
+  },
+  {
+    "role": "assistant",
+    "content": "Your recent workflows are **still deploying**.\n\n- **dep_58281D** \u2014 routing-config-v23: deploying\n- **dep_D5C29A** \u2014 routing-config-v24: deploying\n- **dep_2A4569** \u2014 routing-config-v24: deploying\n\nOverall network status is **HEALTHY**, with stable metrics:\n- Latency: 120ms\n- Packet Loss: 0.1%\n- CPU: 28%\n- Throughput: 9.8 Gbps\n- Error Rate: 0.05%\n\nIf you want, I can also summarize whether any deployment looks risky based on the metrics.",
+    "timestamp": "2026-05-21T12:29:23.017370"
   }
 ]

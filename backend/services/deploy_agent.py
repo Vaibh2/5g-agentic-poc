@@ -17,6 +17,7 @@ except ImportError as e:
     print(f"[INIT] CrewAI not available - using mock mode: {e}", file=sys.stderr)
 
 from services.slack_notification import send_workflow_alert
+from services.jira_service import create_deployment_failure_ticket, create_rollback_ticket
 
 WORKFLOWS_FILE = Path(__file__).parent.parent / "data" / "workflows.json"
 
@@ -115,8 +116,13 @@ class DeployAgent:
             agent_results = analysis_result.get("agent_results", {})
             rollback_info = agent_results.get("rollback", {})
             
-            _update_workflow(workflow_id, narration=f"Deployment failed: {analysis_result.get('error', 'Unknown error')}")
+            error_msg = analysis_result.get('error', 'Unknown error')
+            _update_workflow(workflow_id, narration=f"Deployment failed: {error_msg}")
             _update_workflow(workflow_id, status="FAILED")
+
+            ticket_key = create_deployment_failure_ticket(workflow_id, workflow_id, error_msg)
+            if ticket_key:
+                _update_workflow(workflow_id, narration=f"Jira ticket created: {ticket_key}")
 
             rollback_reason = None
             if rollback_info:
@@ -135,6 +141,14 @@ class DeployAgent:
                 _update_workflow(workflow_id, narration=f"Rollback Agent: {rollback_info.get('reason', 'Analyzing failure...')}")
                 _update_workflow(workflow_id, narration=f"Risk Level: {rollback_info.get('risk_level', 'MEDIUM')}")
                 _update_workflow(workflow_id, narration=f"Estimated Recovery Time: {rollback_info.get('estimated_recovery_time', 30)}s")
+                
+                ticket_key = create_rollback_ticket(
+                    workflow_id, workflow_id,
+                    rollback_info.get("reason", "Deployment failed"),
+                    rollback_info.get("risk_level", "MEDIUM")
+                )
+                if ticket_key:
+                    _update_workflow(workflow_id, narration=f"Jira ticket created: {ticket_key}")
                 
                 if rollback_info.get("confirmation_required"):
                     _update_workflow(workflow_id, narration="Rollback awaiting operator confirmation...")

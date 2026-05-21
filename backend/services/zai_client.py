@@ -26,7 +26,7 @@ async def chat_complete(
     messages: list,
     model: str = "gpt-5.4-mini-2026-03-17",
     temperature: float = 0.7,
-    max_tokens: int = 2048,
+    max_completion_tokens: int = 2048,
 ) -> str:
     client = get_openai_client()
     if not client:
@@ -36,6 +36,6 @@ async def chat_complete(
         model=model,
         messages=messages,
         temperature=temperature,
-        max_tokens=max_tokens,
+        max_completion_tokens=max_completion_tokens,
     )
     return response.choices[0].message.content

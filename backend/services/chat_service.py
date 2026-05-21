@@ -10,6 +10,7 @@ from services.monitoring_service import MonitoringService
 from services.deployment_service import DeploymentService
 from services.rag_service import RAGService
 from services.rollback_service import RollbackService
+from services.zai_client import get_openai_client
 
 MEMORY_FILE = Path(__file__).parent.parent / "data" / "memory.json"
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
@@ -132,16 +133,27 @@ class ChatService:
             return ChatService._mock_response(message_lower, metrics, alerts, deployments)
         
         try:
-            from openai import OpenAI
-            client = OpenAI(api_key=OPENAI_API_KEY)
+            client = get_openai_client()
+            if not client:
+                return ChatService._mock_response(message_lower, metrics, alerts, deployments)
+            
+            memory = _load_memory()
+            conversation_history = [
+                {"role": m["role"], "content": m["content"]} 
+                for m in memory[-10:]
+            ]
+            
+            messages = [
+                {"role": "system", "content": SYSTEM_PROMPT},
+            ] + conversation_history + [
+                {"role": "user", "content": user_prompt},
+            ]
+            
             response = client.chat.completions.create(
                 model=MODEL,
-                messages=[
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": user_prompt},
-                ],
+                messages=messages,
                 temperature=0.7,
-                max_tokens=500,
+                max_completion_tokens=500,
             )
             return response.choices[0].message.content
         except Exception as e:
