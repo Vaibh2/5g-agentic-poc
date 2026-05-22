@@ -6796,5 +6796,94 @@
         "message": "Rollback executed successfully - services restored to previous stable state"
       }
     ]
+  },
+  {
+    "workflow_id": "wf_02519FBB",
+    "status": "RUNNING",
+    "trigger": "git-push",
+    "files_changed": [
+      "config-project/config.yaml",
+      "config-project/config2.yaml",
+      "config-project/network.yaml",
+      "config-project/new.yaml",
+      "config-project/newconfig.yaml",
+      "config-project/test.yaml",
+      "config-project/working-config.yaml"
+    ],
+    "repo_path": "/Users/gaurav/Downloads/5g-agentic-poc",
+    "created_at": "2026-05-22T01:59:15.427481",
+    "steps": [],
+    "agent_narrations": [
+      {
+        "timestamp": "2026-05-22T01:59:15.438426",
+        "agent": "Deploy Agent",
+        "message": "Deploy Agent initialized - awaiting task assignment..."
+      },
+      {
+        "timestamp": "2026-05-22T01:59:17.443894",
+        "agent": "Deploy Agent",
+        "message": "Fetching changed files from repository..."
+      },
+      {
+        "timestamp": "2026-05-22T01:59:18.451427",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config-project/config.yaml"
+      },
+      {
+        "timestamp": "2026-05-22T01:59:19.457619",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config-project/config2.yaml"
+      },
+      {
+        "timestamp": "2026-05-22T01:59:20.464301",
+        "agent": "Deploy Agent",
+        "message": "Using default configuration for: config-project/network.yaml"
+      },
+      {
+        "timestamp": "2026-05-22T01:59:21.472056",
+        "agent": "Deploy Agent",
+        "message": "Using default configuration for: config-project/new.yaml"
+      },
+      {
+        "timestamp": "2026-05-22T01:59:22.481441",
+        "agent": "Deploy Agent",
+        "message": "Using default configuration for: config-project/newconfig.yaml"
+      },
+      {
+        "timestamp": "2026-05-22T01:59:23.490384",
+        "agent": "Deploy Agent",
+        "message": "Using default configuration for: config-project/test.yaml"
+      },
+      {
+        "timestamp": "2026-05-22T01:59:24.496367",
+        "agent": "Deploy Agent",
+        "message": "Configuration file loaded: config-project/working-config.yaml"
+      },
+      {
+        "timestamp": "2026-05-22T01:59:26.503489",
+        "agent": "Deploy Agent",
+        "message": "Analyzing YAML configuration structure and parameters..."
+      },
+      {
+        "timestamp": "2026-05-22T01:59:27.509823",
+        "agent": "Deploy Agent",
+        "message": "Starting multi-agent validation pipeline..."
+      },
+      {
+        "timestamp": "2026-05-22T01:59:28.517178",
+        "agent": "Deploy Agent",
+        "message": "Starting YAML configuration validation and syntax analysis..."
+      },
+      {
+        "timestamp": "2026-05-22T01:59:34.273079",
+        "agent": "Deploy Agent",
+        "message": "AI validation complete: config-project/config.yaml and config-project/working-config.yaml are structurally close to deployment-ready, but config.yaml uses mtu_size instead of the expected mtu field and is missing one monitoring threshold. config2.yaml has multiple blocking omissions and invalid numeric values. The remaining mock YAML files are incomplete and not deployment-ready."
+      },
+      {
+        "timestamp": "2026-05-22T01:59:35.279578",
+        "agent": "Rollback Agent",
+        "message": "Analyzing deployment failure and evaluating rollback requirements..."
+      }
+    ]
   }
 ]

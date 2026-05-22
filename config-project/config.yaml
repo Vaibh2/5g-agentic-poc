@@ -12,7 +12,7 @@ sector:
       bandwidth_mhz: 100
     - cell_id: "CELL-7B"
       frequency_band: "n78"
-      bandwidth_mhz: 100
+      bandwidth_mhz: 101
 
 routing:
   mtu_size: 1501
