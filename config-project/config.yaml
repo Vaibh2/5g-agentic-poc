@@ -10,7 +10,7 @@ sector:
     - cell_id: "CELL-7"
       frequency_band: "n78"
       bandwidth_mhz: 100
-    - cell_id: "CELL-7B"
+    - cell_id: "CELL-7"
       frequency_band: "n78"
       bandwidth_mhz: 101
 
