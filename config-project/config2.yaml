@@ -1,0 +1,24 @@
+network:
+  name: "5G-TEST-FAIL"
+  type: "standalone"
+
+sector:
+  id: "SECTOR-1"
+  location: "test-location"
+
+routing:
+  mtu: 9999
+  bgp_asn: 6500
+  peering:
+    - peer_asn: 65002
+      peer_ip: "10.1.0.2"
+
+transport:
+  uplink_gbps: 10
+  downlink_gbps: 20
+
+security:
+  encryption: "aes-256-gcm"
+
+monitoring:
+  enabled: true

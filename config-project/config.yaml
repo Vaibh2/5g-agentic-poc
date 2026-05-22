@@ -1,0 +1,81 @@
+network:
+  name: "5G-CORE-PROD"
+  type: "standalone"
+  version: "r2"
+
+sector:
+  id: "SECTOR-7A"
+  location: "Mumbai-Metro-North"
+  cells:
+    - cell_id: "CELL-7"
+      frequency_band: "n78"
+      bandwidth_mhz: 100
+    - cell_id: "CELL-7B"
+      frequency_band: "n78"
+      bandwidth_mhz: 100
+
+routing:
+  mtu_size: 1501
+  bgp_asn: 65001
+  bgp_route_preference: 100
+  peering:
+    - peer_asn: 65002
+      peer_ip: "10.7.0.2"
+      prefix_limit: 100
+  qos_policy: "enhanced"
+
+transport:
+  uplink_gbps: 10
+  downlink_gbps: 20
+  redundancy: "active-active"
+
+security:
+  encryption: "aes-256-gcm"
+  authentication: "mutual-tls"
+  firewall_rules:
+    - rule_id: "ALLOW-AMF-CONTROL"
+      source: "10.0.0.10/32"
+      destination: "10.0.0.20/32"
+      port: 38412
+      protocol: "sctp"
+      action: "permit"
+    - rule_id: "ALLOW-SMF-CONTROL"
+      source: "10.0.0.11/32"
+      destination: "10.0.0.21/32"
+      port: 38412
+      protocol: "sctp"
+      action: "permit"
+    - rule_id: "ALLOW-UPF-N3"
+      source: "10.0.0.30/32"
+      destination: "10.0.0.10/32"
+      port: 2152
+      protocol: "udp"
+      action: "permit"
+    - rule_id: "ALLOW-BGP"
+      source: "10.7.0.2/32"
+      destination: "10.7.0.1/32"
+      port: 179
+      protocol: "tcp"
+      action: "permit"
+    - rule_id: "ALLOW-MONITORING"
+      source: "10.0.0.100/32"
+      destination: "10.0.0.0/24"
+      port: 9090
+      protocol: "tcp"
+      action: "permit"
+    - rule_id: "DENY-DEFAULT"
+      source: "0.0.0.0/0"
+      destination: "0.0.0.0/0"
+      action: "deny"
+
+monitoring:
+  enabled: true
+  metrics:
+    - latency_ms
+    - packet_loss_pct
+    - cpu_usage_pct
+    - throughput_gbps
+  alert_thresholds:
+    latency_ms: 500
+    packet_loss_pct: 5
+    cpu_usage_pct: 80
