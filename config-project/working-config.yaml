@@ -60,7 +60,7 @@ security:
     - rule_id: "ALLOW-MONITORING"
       source: "10.0.0.100/32"
       destination: "10.0.0.0/24"
-      port: 9090
+      port: 9091
       protocol: "tcp"
       action: "permit"
     - rule_id: "DENY-DEFAULT"
