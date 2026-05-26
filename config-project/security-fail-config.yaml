@@ -7,7 +7,7 @@ sector:
   id: "SECTOR-97"
   location: "Mumbai-Metro-Test"
   cells:
-    - cell_id: "CELL-99B"
+    - cell_id: "CELL-99Z"
       frequency_band: "n78"
       bandwidth_mhz: 100
 
